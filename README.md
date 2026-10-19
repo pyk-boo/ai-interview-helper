@@ -37,7 +37,7 @@
 | Works offline | ✅ With Ollama | ❌ |
 | Where your data goes | ✅ Straight to the AI provider you pick | Through the vendor's servers |
 
-> **How is it free?** The app itself costs nothing. For the AI part you either use a free-tier API key (Groq, Gemini and Z.ai all have one) or run a model locally with Ollama. No middleman, no markup.
+> **How is it free?** The app itself costs nothing. For the AI part you either use a free-tier API key (Gemini, Groq and Z.ai all have one) or run a model locally with Ollama. No middleman, no markup.
 
 Detailed comparisons: [Free Cluely alternative](https://pyk-boo.github.io/ai-interview-helper/cluely-alternative/) · [Free Interview Coder alternative](https://pyk-boo.github.io/ai-interview-helper/interview-coder-alternative/) · [Free Final Round AI alternative](https://pyk-boo.github.io/ai-interview-helper/final-round-ai-alternative/)
 
@@ -78,7 +78,7 @@ npm start
 
 On Windows you can simply double-click **`start.bat`**. It installs everything on the first run.
 
-**Get a free API key in 1 minute:** sign up at [console.groq.com](https://console.groq.com), create a key, paste it into the app settings (⚙). One Groq key covers both chat and speech recognition. Full walkthrough: [How to get a free AI interview assistant in 5 minutes](https://pyk-boo.github.io/ai-interview-helper/free-ai-interview-assistant/).
+**Get a free API key in 1 minute:** sign in at [aistudio.google.com](https://aistudio.google.com/apikey) with your Google account, create a Gemini key and paste it into the app settings (⚙). One Gemini key covers chat, speech recognition and screenshots. For even faster answers, add a free [Groq](https://console.groq.com) key too. Full walkthrough: [How to get a free AI interview assistant in 5 minutes](https://pyk-boo.github.io/ai-interview-helper/free-ai-interview-assistant/).
 
 ## ⌨️ Hotkeys
 
@@ -96,9 +96,9 @@ On macOS use <kbd>⌘ Cmd</kbd> instead of <kbd>Ctrl</kbd>.
 
 | Provider | Models | Vision | Speech-to-text | Free tier |
 |---|---|:-:|:-:|:-:|
-| **Groq** ⭐ | GPT-OSS 20B / 120B, Qwen3.6 27B | ✅* | ✅ Whisper | ✅ |
+| **Groq** | GPT-OSS 20B / 120B, Qwen3.6 27B | ✅* | ✅ Whisper | ✅ |
 | **Anthropic** | Claude Sonnet / Haiku / Opus | ✅ | — | — |
-| **Google Gemini** | Flash, 2.5 Flash, Flash-Lite | ✅ | ✅ | ✅ |
+| **Google Gemini** ⭐ | Flash, 2.5 Flash, Flash-Lite | ✅ | ✅ | ✅ |
 | **OpenAI** | GPT-4o, GPT-4o mini | ✅ | ✅ Whisper | — |
 | **DeepSeek** | Chat, Reasoner | — | — | — |
 | **Z.ai** | GLM-4.5 Flash / Air, GLM-4.5, GLM-4.6 | ✅* | — | ✅ |
@@ -120,7 +120,7 @@ In the **Audio** tab, enable *"Distinguish interviewer's voice from mine"* and s
 <details>
 <summary><b>Is AI Interview Helper really free?</b></summary>
 
-Yes. The app is open source under the MIT license, and there is no paid plan. You only need an AI key, and Groq, Gemini and Z.ai offer free tiers. With Ollama it runs fully offline at zero cost.
+Yes. The app is open source under the MIT license, and there is no paid plan. You only need an AI key, and Gemini, Groq and Z.ai offer free tiers. With Ollama it runs fully offline at zero cost.
 </details>
 
 <details>

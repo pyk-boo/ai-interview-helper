@@ -21,7 +21,7 @@ const OURS = `
 const LIMITS = `
 <h2>Honest limitations</h2>
 <ul>
-  <li>You need your own AI key. Free tiers from Groq, Gemini and Z.ai are enough for most people, and Ollama needs no key at all.</li>
+  <li>You need your own AI key. Free tiers from Gemini, Groq and Z.ai are enough for most people, and Ollama needs no key at all.</li>
   <li>There is a ready installer for Windows only. On macOS you run it from source with Node.js.</li>
   <li>There is no mobile app and no hosted cloud version.</li>
   <li>The Windows app isn't code-signed yet, so Windows shows a SmartScreen warning on first launch.</li>
@@ -31,7 +31,7 @@ const SWITCH = `
 <h2>How to switch in 3 steps</h2>
 <ol>
   <li><a href="${DL}">Download the Windows installer</a> (or run it <a href="${REPO}#-quick-start">from source</a> on macOS).</li>
-  <li>Create a free key at <a href="https://console.groq.com">console.groq.com</a> and paste it into the app settings.</li>
+  <li>Create a free Gemini key at <a href="https://aistudio.google.com/apikey">aistudio.google.com</a> and paste it into the app settings. One key covers chat, voice and screenshots.</li>
   <li>Press <code>Ctrl+Shift+L</code> to listen or <code>Ctrl+Shift+Space</code> to solve what's on screen. The <a href="${SITE}free-ai-interview-assistant/">full setup guide</a> covers audio and model choice.</li>
 </ol>`;
 
@@ -76,12 +76,12 @@ ${LIMITS}
 ${SWITCH}`,
   faq: [
     { q: "Is there a free alternative to Cluely?", a: "Yes. AI Interview Helper is a free, open-source AI interview copilot. It listens to the interviewer, reads your screen and suggests answers without a subscription." },
-    { q: "Is AI Interview Helper really free?", a: "Yes. There is no paid plan. You use a free-tier AI key (Groq, Gemini or Z.ai) or run a local model with Ollama at zero cost." },
+    { q: "Is AI Interview Helper really free?", a: "Yes. There is no paid plan. You use a free-tier AI key (Gemini, Groq or Z.ai) or run a local model with Ollama at zero cost." },
     { q: "Does it work like Cluely in interviews?", a: "The core workflow is the same: transcribe the question, look at the screen, suggest an answer. It focuses on interviews and doesn't include Cluely's meeting-notes or sales features." },
     { q: "Is my data safer than with a cloud service?", a: "Your keys stay on your computer, and requests go straight to the AI provider you choose, with no extra server in between. The provider's own privacy policy still applies." },
   ],
   ctaH: "Try the free Cluely alternative",
-  ctaP: "Download it, paste a free Groq key, and you're ready in about two minutes.",
+  ctaP: "Download it, paste a free Gemini key, and you're ready in about two minutes.",
 },
 {
   slug: "interview-coder-alternative",
@@ -132,7 +132,7 @@ ${SWITCH}`,
     { q: "Can it help with behavioral and system design questions too?", a: "Yes. Voice mode transcribes spoken questions and suggests answers, using your resume for behavioral questions." },
   ],
   ctaH: "Try the free Interview Coder alternative",
-  ctaP: "Download it, paste a free Groq key, and solve your first task in about two minutes.",
+  ctaP: "Download it, paste a free Gemini key, and solve your first task in about two minutes.",
 },
 {
   slug: "final-round-ai-alternative",
@@ -185,9 +185,9 @@ export const GUIDES = [
   slug: "free-ai-interview-assistant",
   ico: "🛠",
   navLabel: "Set up a free AI interview assistant",
-  cardText: "Download, free Groq key, audio setup and the best models, step by step.",
+  cardText: "Download, free Gemini key, audio setup and the best models, step by step.",
   title: "How to Get a Free AI Interview Assistant in 5 Minutes (2026)",
-  description: "Set up a free AI interview assistant step by step: download, free Groq API key, interview audio from Zoom or Meet, and the best AI model to pick.",
+  description: "Set up a free AI interview assistant step by step: download, free Gemini API key, interview audio from Zoom or Meet, and the best AI model to pick.",
   h1: `How to get a free <span class="grad">AI interview assistant</span> in 5 minutes`,
   lead: "A step-by-step setup for AI Interview Helper: free download, free AI key, audio from Zoom or Google Meet, and which model to pick.",
   readTime: "6 min",
@@ -200,7 +200,7 @@ export const GUIDES = [
 <ul>
   <li>A Windows 10/11 computer (on macOS, run it from source with Node.js 18+).</li>
   <li>About 5 minutes.</li>
-  <li>An email address to create a free Groq account.</li>
+  <li>A Google account to get a free Gemini key.</li>
 </ul>
 
 <h2>Step 1. Download and install</h2>
@@ -209,14 +209,16 @@ export const GUIDES = [
 
 <h2>Step 2. Get a free AI key</h2>
 <ol>
-  <li>Go to <a href="https://console.groq.com">console.groq.com</a> and sign up.</li>
-  <li>Open <strong>API Keys</strong> and create a new key.</li>
-  <li>Copy it. It starts with <code>gsk_</code>.</li>
+  <li>Go to <a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> and sign in with your Google account.</li>
+  <li>Click <strong>Create API key</strong>.</li>
+  <li>Copy it. It starts with <code>AIza</code>.</li>
 </ol>
-<p>One Groq key covers both the chat and speech recognition (Whisper), and the free tier is enough for practice. Gemini and Z.ai also have free tiers. Ollama runs a model on your own computer without any key.</p>
+<p>One Gemini key covers everything: chat answers, speech recognition and screenshots of coding tasks. The free tier is enough for practice.</p>
+<div class="callout"><p><strong>Want even faster answers?</strong> Add a free <a href="https://console.groq.com">Groq</a> key as well. Groq is the fastest provider and uses Whisper for speech recognition, but its free models can't read screenshots, so keep Gemini for those. If Gemini isn't available in your country, Groq or Z.ai are good free options, and Ollama runs a model on your own computer without any key.</p></div>
+<p>A note on privacy: on Google's free tier, your prompts may be used to improve Google's products. If that matters to you, use a paid key or a local model with Ollama.</p>
 
 <h2>Step 3. Paste the key</h2>
-<p>Open the app, click the settings icon (⚙) and paste the key into the <strong>Groq</strong> field. A green dot means the key is set. Optionally, add the role you're interviewing for and paste your resume: answers then come in first person, based on your experience.</p>
+<p>Open the app, click the settings icon (⚙) and paste the key into the <strong>Gemini</strong> field. A green dot means the key is set. Optionally, add the role you're interviewing for and paste your resume: answers then come in first person, based on your experience.</p>
 
 <h2>Step 4. Let the app hear the interviewer</h2>
 <p>Your microphone only hears you. To capture the other side of a Zoom, Google Meet or Teams call, add a system-audio source:</p>

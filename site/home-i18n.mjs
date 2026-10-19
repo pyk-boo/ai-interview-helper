@@ -54,7 +54,7 @@ export const HOME = [
     eyebrow: `How it works`, h2: `Up and running in 2 minutes`,
     steps: [
       { h: `Download &amp; open`, p: `Grab the Windows installer or the portable .exe. Nothing else to install.` },
-      { h: `Paste a free key`, p: `Get a free key at <a href="https://console.groq.com">console.groq.com</a> and paste it into settings. It covers chat and voice.` },
+      { h: `Paste a free key`, p: `Get a free Gemini key at <a href="https://aistudio.google.com/apikey">aistudio.google.com</a> and paste it into settings. One key covers chat, voice and screenshots.` },
       { h: `Press a hotkey`, p: `${K("Ctrl", "Shift", "L")} to listen, ${K("Ctrl", "Shift", "Space")} to solve what's on screen.` },
     ],
   },
@@ -70,7 +70,7 @@ export const HOME = [
       [`Works offline`, `Yes, with Ollama`, `No`],
       [`Where your data goes`, `Straight to the AI you pick`, `Through the vendor's servers`],
     ],
-    note: `<b>How is it free?</b> The app costs nothing. For the AI part, use a free-tier key (Groq, Gemini and Z.ai all have one) or run a model locally with Ollama. No middleman, no markup.`,
+    note: `<b>How is it free?</b> The app costs nothing. For the AI part, use a free-tier key (Gemini, Groq and Z.ai all have one) or run a model locally with Ollama. No middleman, no markup.`,
     free: `FREE`, offline: `OFFLINE`,
   },
   alternatives: {
@@ -85,14 +85,14 @@ export const HOME = [
   guides: {
     eyebrow: `Guides`, h2: `Get the most out of it`, more: `Read the guide →`,
     cards: [
-      { h: `How to get a free AI interview assistant`, p: `Step by step: download, free Groq key, audio setup and the best models. About 5 minutes.` },
+      { h: `How to get a free AI interview assistant`, p: `Step by step: download, free Gemini key, audio setup and the best models. About 5 minutes.` },
       { h: `How to practice coding interviews with AI`, p: `A free routine to prepare for LeetCode-style and live coding interviews with an AI copilot.` },
     ],
   },
   faq: {
     h2: `Questions people ask`,
     items: [
-      { q: `Is there a free AI interview copilot?`, a: `Yes. AI Interview Helper is a free, open-source AI interview copilot for Windows and macOS. There is no paid plan: you bring a free AI key (Groq, Gemini or Z.ai) or run a local model with Ollama.` },
+      { q: `Is there a free AI interview copilot?`, a: `Yes. AI Interview Helper is a free, open-source AI interview copilot for Windows and macOS. There is no paid plan: you bring a free AI key (Gemini, Groq or Z.ai) or run a local model with Ollama.` },
       { q: `Is AI Interview Helper open source?`, a: `Yes. The full source code is on GitHub under the MIT license: <a href="https://github.com/pyk-boo/ai-interview-helper">github.com/pyk-boo/ai-interview-helper</a>. You can read it, change it or build the app yourself.` },
       { q: `Is it an AI interviewer?`, a: `Not quite. An AI interviewer asks you questions. AI Interview Helper is on the candidate's side: it listens to the question and suggests an answer. For practice, run a mock interview with a friend or a recorded question list and see how a strong answer could sound.` },
       { q: `Is it a free alternative to Cluely or Interview Coder?`, a: `Yes. It covers the same core workflow (listen to the question, read the screen, suggest an answer) without a subscription and with any AI model you want.` },
@@ -161,7 +161,7 @@ export const HOME = [
     eyebrow: `Cómo funciona`, h2: `Listo en 2 minutos`,
     steps: [
       { h: `Descarga y abre`, p: `Descarga el instalador para Windows o el .exe portable. No hace falta instalar nada más.` },
-      { h: `Pega una clave gratis`, p: `Consigue una clave gratuita en <a href="https://console.groq.com">console.groq.com</a> y pégala en los ajustes. Sirve para el chat y la voz.` },
+      { h: `Pega una clave gratis`, p: `Consigue una clave gratuita de Gemini en <a href="https://aistudio.google.com/apikey">aistudio.google.com</a> y pégala en los ajustes. Una sola clave sirve para el chat, la voz y las capturas.` },
       { h: `Pulsa un atajo`, p: `${K("Ctrl", "Shift", "L")} para escuchar, ${K("Ctrl", "Shift", "Space")} para resolver lo que hay en pantalla.` },
     ],
   },
@@ -177,7 +177,7 @@ export const HOME = [
       [`Funciona sin internet`, `Sí, con Ollama`, `No`],
       [`A dónde van tus datos`, `Directo a la IA que elijas`, `A través de sus servidores`],
     ],
-    note: `<b>¿Por qué es gratis?</b> La app no cuesta nada. Para la IA usas una clave gratuita (Groq, Gemini y Z.ai la ofrecen) o un modelo local con Ollama. Sin intermediarios.`,
+    note: `<b>¿Por qué es gratis?</b> La app no cuesta nada. Para la IA usas una clave gratuita (Gemini, Groq y Z.ai la ofrecen) o un modelo local con Ollama. Sin intermediarios.`,
     free: `GRATIS`, offline: `OFFLINE`,
   },
   alternatives: {
@@ -192,14 +192,14 @@ export const HOME = [
   guides: {
     eyebrow: `Guías`, h2: `Sácale el máximo partido`, more: `Leer la guía →`,
     cards: [
-      { h: `Cómo conseguir un asistente de entrevistas con IA gratis`, p: `Paso a paso: descarga, clave gratuita de Groq, audio y los mejores modelos.` },
+      { h: `Cómo conseguir un asistente de entrevistas con IA gratis`, p: `Paso a paso: descarga, clave gratuita de Gemini, audio y los mejores modelos.` },
       { h: `Cómo practicar entrevistas de programación con IA`, p: `Una rutina gratuita para preparar entrevistas tipo LeetCode y live coding.` },
     ],
   },
   faq: {
     h2: `Preguntas frecuentes`,
     items: [
-      { q: `¿Existe un asistente de entrevistas con IA gratis?`, a: `Sí. AI Interview Helper es un copiloto de entrevistas con IA gratuito y de código abierto para Windows y macOS. No hay plan de pago: usas una clave gratuita (Groq, Gemini o Z.ai) o un modelo local con Ollama.` },
+      { q: `¿Existe un asistente de entrevistas con IA gratis?`, a: `Sí. AI Interview Helper es un copiloto de entrevistas con IA gratuito y de código abierto para Windows y macOS. No hay plan de pago: usas una clave gratuita (Gemini, Groq o Z.ai) o un modelo local con Ollama.` },
       { q: `¿Es de código abierto?`, a: `Sí. Todo el código está en GitHub con licencia MIT: <a href="https://github.com/pyk-boo/ai-interview-helper">github.com/pyk-boo/ai-interview-helper</a>.` },
       { q: `¿Es un entrevistador con IA?`, a: `No exactamente. Un entrevistador con IA te hace preguntas. AI Interview Helper está de tu lado: escucha la pregunta y te sugiere una respuesta. Para practicar, haz una entrevista simulada con un amigo o una lista de preguntas grabada.` },
       { q: `¿Es una alternativa gratuita a Cluely o Interview Coder?`, a: `Sí. Cubre el mismo flujo principal (escuchar la pregunta, leer la pantalla, sugerir una respuesta) sin suscripción y con el modelo de IA que prefieras.` },
@@ -256,7 +256,7 @@ export const HOME = [
     eyebrow: `Como funciona`, h2: `Pronto em 2 minutos`,
     steps: [
       { h: `Baixe e abra`, p: `Baixe o instalador para Windows ou o .exe portátil. Não precisa instalar mais nada.` },
-      { h: `Cole uma chave grátis`, p: `Pegue uma chave gratuita em <a href="https://console.groq.com">console.groq.com</a> e cole nas configurações. Serve para chat e voz.` },
+      { h: `Cole uma chave grátis`, p: `Pegue uma chave gratuita do Gemini em <a href="https://aistudio.google.com/apikey">aistudio.google.com</a> e cole nas configurações. Uma só chave serve para chat, voz e prints.` },
       { h: `Use um atalho`, p: `${K("Ctrl", "Shift", "L")} para ouvir, ${K("Ctrl", "Shift", "Space")} para resolver o que está na tela.` },
     ],
   },
@@ -272,7 +272,7 @@ export const HOME = [
       [`Funciona offline`, `Sim, com Ollama`, `Não`],
       [`Para onde vão seus dados`, `Direto para a IA que você escolher`, `Pelos servidores do fornecedor`],
     ],
-    note: `<b>Por que é grátis?</b> O app não custa nada. Para a IA você usa uma chave gratuita (Groq, Gemini e Z.ai oferecem) ou roda um modelo local com Ollama. Sem intermediários.`,
+    note: `<b>Por que é grátis?</b> O app não custa nada. Para a IA você usa uma chave gratuita (Gemini, Groq e Z.ai oferecem) ou roda um modelo local com Ollama. Sem intermediários.`,
     free: `GRÁTIS`, offline: `OFFLINE`,
   },
   alternatives: {
@@ -287,14 +287,14 @@ export const HOME = [
   guides: {
     eyebrow: `Guias`, h2: `Aproveite ao máximo`, more: `Ler o guia →`,
     cards: [
-      { h: `Como ter um assistente de entrevista com IA grátis`, p: `Passo a passo: download, chave grátis do Groq, áudio e os melhores modelos.` },
+      { h: `Como ter um assistente de entrevista com IA grátis`, p: `Passo a passo: download, chave grátis do Gemini, áudio e os melhores modelos.` },
       { h: `Como treinar entrevistas de programação com IA`, p: `Uma rotina gratuita para se preparar para entrevistas estilo LeetCode e live coding.` },
     ],
   },
   faq: {
     h2: `Perguntas frequentes`,
     items: [
-      { q: `Existe um assistente de entrevista com IA grátis?`, a: `Sim. O AI Interview Helper é um copiloto de entrevista com IA gratuito e de código aberto para Windows e macOS. Não há plano pago: você usa uma chave gratuita (Groq, Gemini ou Z.ai) ou um modelo local com Ollama.` },
+      { q: `Existe um assistente de entrevista com IA grátis?`, a: `Sim. O AI Interview Helper é um copiloto de entrevista com IA gratuito e de código aberto para Windows e macOS. Não há plano pago: você usa uma chave gratuita (Gemini, Groq ou Z.ai) ou um modelo local com Ollama.` },
       { q: `É de código aberto?`, a: `Sim. Todo o código está no GitHub sob licença MIT: <a href="https://github.com/pyk-boo/ai-interview-helper">github.com/pyk-boo/ai-interview-helper</a>.` },
       { q: `É um entrevistador de IA?`, a: `Não exatamente. Um entrevistador de IA faz perguntas para você. O AI Interview Helper fica do seu lado: ouve a pergunta e sugere uma resposta. Para treinar, faça uma entrevista simulada com um amigo ou com uma lista de perguntas gravada.` },
       { q: `É uma alternativa gratuita ao Cluely ou ao Interview Coder?`, a: `Sim. Ele cobre o mesmo fluxo principal (ouvir a pergunta, ler a tela, sugerir uma resposta) sem assinatura e com o modelo de IA que você quiser.` },
@@ -351,7 +351,7 @@ export const HOME = [
     eyebrow: `So funktioniert's`, h2: `In 2 Minuten startklar`,
     steps: [
       { h: `Herunterladen &amp; öffnen`, p: `Installer für Windows oder die portable .exe laden. Sonst muss nichts installiert werden.` },
-      { h: `Kostenlosen Schlüssel einfügen`, p: `Hol dir einen kostenlosen Schlüssel auf <a href="https://console.groq.com">console.groq.com</a> und füge ihn in den Einstellungen ein. Er deckt Chat und Sprache ab.` },
+      { h: `Kostenlosen Schlüssel einfügen`, p: `Hol dir einen kostenlosen Gemini-Schlüssel auf <a href="https://aistudio.google.com/apikey">aistudio.google.com</a> und füge ihn in den Einstellungen ein. Ein Schlüssel deckt Chat, Sprache und Screenshots ab.` },
       { h: `Tastenkürzel drücken`, p: `${K("Strg", "Shift", "L")} zum Zuhören, ${K("Strg", "Shift", "Leertaste")} für die Aufgabe auf dem Bildschirm.` },
     ],
   },
@@ -367,7 +367,7 @@ export const HOME = [
       [`Funktioniert offline`, `Ja, mit Ollama`, `Nein`],
       [`Wohin deine Daten gehen`, `Direkt zur KI deiner Wahl`, `Über die Server des Anbieters`],
     ],
-    note: `<b>Warum kostenlos?</b> Die App kostet nichts. Für die KI nutzt du einen kostenlosen Schlüssel (Groq, Gemini und Z.ai bieten einen an) oder ein lokales Modell mit Ollama. Kein Zwischenhändler.`,
+    note: `<b>Warum kostenlos?</b> Die App kostet nichts. Für die KI nutzt du einen kostenlosen Schlüssel (Gemini, Groq und Z.ai bieten einen an) oder ein lokales Modell mit Ollama. Kein Zwischenhändler.`,
     free: `GRATIS`, offline: `OFFLINE`,
   },
   alternatives: {
@@ -382,14 +382,14 @@ export const HOME = [
   guides: {
     eyebrow: `Anleitungen`, h2: `Das Beste herausholen`, more: `Anleitung lesen →`,
     cards: [
-      { h: `Kostenlosen KI-Interview-Assistenten einrichten`, p: `Schritt für Schritt: Download, kostenloser Groq-Schlüssel, Audio und die besten Modelle.` },
+      { h: `Kostenlosen KI-Interview-Assistenten einrichten`, p: `Schritt für Schritt: Download, kostenloser Gemini-Schlüssel, Audio und die besten Modelle.` },
       { h: `Coding-Interviews mit KI üben`, p: `Eine kostenlose Routine zur Vorbereitung auf LeetCode-Aufgaben und Live-Coding.` },
     ],
   },
   faq: {
     h2: `Häufige Fragen`,
     items: [
-      { q: `Gibt es einen kostenlosen KI-Interview-Assistenten?`, a: `Ja. AI Interview Helper ist ein kostenloser Open-Source-KI-Copilot für Interviews unter Windows und macOS. Es gibt keinen Bezahlplan: Du nutzt einen kostenlosen Schlüssel (Groq, Gemini oder Z.ai) oder ein lokales Modell mit Ollama.` },
+      { q: `Gibt es einen kostenlosen KI-Interview-Assistenten?`, a: `Ja. AI Interview Helper ist ein kostenloser Open-Source-KI-Copilot für Interviews unter Windows und macOS. Es gibt keinen Bezahlplan: Du nutzt einen kostenlosen Schlüssel (Gemini, Groq oder Z.ai) oder ein lokales Modell mit Ollama.` },
       { q: `Ist das Open Source?`, a: `Ja. Der komplette Quellcode liegt unter MIT-Lizenz auf GitHub: <a href="https://github.com/pyk-boo/ai-interview-helper">github.com/pyk-boo/ai-interview-helper</a>.` },
       { q: `Ist das ein KI-Interviewer?`, a: `Nicht ganz. Ein KI-Interviewer stellt dir Fragen. AI Interview Helper steht auf deiner Seite: Er hört die Frage und schlägt eine Antwort vor. Zum Üben eignet sich ein Probeinterview mit Freunden oder einer aufgenommenen Fragenliste.` },
       { q: `Ist es eine kostenlose Alternative zu Cluely oder Interview Coder?`, a: `Ja. Es deckt denselben Kernablauf ab (Frage hören, Bildschirm lesen, Antwort vorschlagen), ohne Abo und mit dem KI-Modell deiner Wahl.` },
@@ -446,7 +446,7 @@ export const HOME = [
     eyebrow: `Fonctionnement`, h2: `Prêt en 2 minutes`,
     steps: [
       { h: `Téléchargez et ouvrez`, p: `Récupérez l'installateur Windows ou le .exe portable. Rien d'autre à installer.` },
-      { h: `Collez une clé gratuite`, p: `Créez une clé gratuite sur <a href="https://console.groq.com">console.groq.com</a> et collez-la dans les réglages. Elle sert pour le chat et la voix.` },
+      { h: `Collez une clé gratuite`, p: `Créez une clé Gemini gratuite sur <a href="https://aistudio.google.com/apikey">aistudio.google.com</a> et collez-la dans les réglages. Une seule clé sert pour le chat, la voix et les captures.` },
       { h: `Utilisez un raccourci`, p: `${K("Ctrl", "Maj", "L")} pour écouter, ${K("Ctrl", "Maj", "Espace")} pour résoudre ce qui est à l'écran.` },
     ],
   },
@@ -462,7 +462,7 @@ export const HOME = [
       [`Fonctionne hors ligne`, `Oui, avec Ollama`, `Non`],
       [`Où vont vos données`, `Directement à l'IA de votre choix`, `Par les serveurs de l'éditeur`],
     ],
-    note: `<b>Pourquoi c'est gratuit ?</b> L'application ne coûte rien. Pour l'IA, vous utilisez une clé gratuite (Groq, Gemini et Z.ai en proposent) ou un modèle local avec Ollama. Aucun intermédiaire.`,
+    note: `<b>Pourquoi c'est gratuit ?</b> L'application ne coûte rien. Pour l'IA, vous utilisez une clé gratuite (Gemini, Groq et Z.ai en proposent) ou un modèle local avec Ollama. Aucun intermédiaire.`,
     free: `GRATUIT`, offline: `HORS LIGNE`,
   },
   alternatives: {
@@ -477,14 +477,14 @@ export const HOME = [
   guides: {
     eyebrow: `Guides`, h2: `En tirer le meilleur`, more: `Lire le guide →`,
     cards: [
-      { h: `Obtenir un assistant d'entretien IA gratuit`, p: `Pas à pas : téléchargement, clé Groq gratuite, audio et meilleurs modèles.` },
+      { h: `Obtenir un assistant d'entretien IA gratuit`, p: `Pas à pas : téléchargement, clé Gemini gratuite, audio et meilleurs modèles.` },
       { h: `S'entraîner aux entretiens de code avec l'IA`, p: `Une routine gratuite pour préparer les entretiens type LeetCode et le live coding.` },
     ],
   },
   faq: {
     h2: `Questions fréquentes`,
     items: [
-      { q: `Existe-t-il un assistant d'entretien IA gratuit ?`, a: `Oui. AI Interview Helper est un copilote d'entretien IA gratuit et open source pour Windows et macOS. Il n'y a pas d'offre payante : vous utilisez une clé gratuite (Groq, Gemini ou Z.ai) ou un modèle local avec Ollama.` },
+      { q: `Existe-t-il un assistant d'entretien IA gratuit ?`, a: `Oui. AI Interview Helper est un copilote d'entretien IA gratuit et open source pour Windows et macOS. Il n'y a pas d'offre payante : vous utilisez une clé gratuite (Gemini, Groq ou Z.ai) ou un modèle local avec Ollama.` },
       { q: `Est-ce open source ?`, a: `Oui. Tout le code est sur GitHub sous licence MIT : <a href="https://github.com/pyk-boo/ai-interview-helper">github.com/pyk-boo/ai-interview-helper</a>.` },
       { q: `Est-ce un recruteur IA ?`, a: `Pas vraiment. Un recruteur IA vous pose des questions. AI Interview Helper est de votre côté : il écoute la question et vous suggère une réponse. Pour s'entraîner, faites un entretien blanc avec un ami ou une liste de questions enregistrée.` },
       { q: `Est-ce une alternative gratuite à Cluely ou Interview Coder ?`, a: `Oui. Il couvre le même fonctionnement de base (écouter la question, lire l'écran, proposer une réponse) sans abonnement et avec le modèle d'IA de votre choix.` },
