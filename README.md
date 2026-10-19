@@ -173,7 +173,8 @@ Output goes to `dist/`.
 ├── stop.vbs      # stop the app
 ├── build/        # app icon for electron-builder
 ├── assets/       # README banner and social preview
-└── docs/         # project website (GitHub Pages)
+├── site/         # website generator: run `node site/build.mjs`
+└── docs/         # built website (GitHub Pages)
 ```
 
 ## 🤝 Contributing
