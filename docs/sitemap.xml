@@ -1,8 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://pyk-boo.github.io/ai-interview-helper/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pyk-boo.github.io/ai-interview-helper/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pyk-boo.github.io/ai-interview-helper/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pyk-boo.github.io/ai-interview-helper/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pyk-boo.github.io/ai-interview-helper/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+  </url>
+  <url>
+    <loc>https://pyk-boo.github.io/ai-interview-helper/es/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pyk-boo.github.io/ai-interview-helper/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pyk-boo.github.io/ai-interview-helper/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pyk-boo.github.io/ai-interview-helper/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pyk-boo.github.io/ai-interview-helper/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+  </url>
+  <url>
+    <loc>https://pyk-boo.github.io/ai-interview-helper/pt/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pyk-boo.github.io/ai-interview-helper/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pyk-boo.github.io/ai-interview-helper/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pyk-boo.github.io/ai-interview-helper/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pyk-boo.github.io/ai-interview-helper/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+  </url>
+  <url>
+    <loc>https://pyk-boo.github.io/ai-interview-helper/de/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pyk-boo.github.io/ai-interview-helper/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pyk-boo.github.io/ai-interview-helper/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pyk-boo.github.io/ai-interview-helper/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pyk-boo.github.io/ai-interview-helper/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+  </url>
+  <url>
+    <loc>https://pyk-boo.github.io/ai-interview-helper/fr/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pyk-boo.github.io/ai-interview-helper/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pyk-boo.github.io/ai-interview-helper/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pyk-boo.github.io/ai-interview-helper/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pyk-boo.github.io/ai-interview-helper/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pyk-boo.github.io/ai-interview-helper/"/>
+  </url>
+  <url>
+    <loc>https://pyk-boo.github.io/ai-interview-helper/cluely-alternative/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pyk-boo.github.io/ai-interview-helper/interview-coder-alternative/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pyk-boo.github.io/ai-interview-helper/final-round-ai-alternative/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pyk-boo.github.io/ai-interview-helper/free-ai-interview-assistant/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pyk-boo.github.io/ai-interview-helper/practice-coding-interviews-with-ai/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>

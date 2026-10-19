@@ -4,7 +4,7 @@
 
 # AI Interview Helper
 
-### Free & open-source AI interview assistant: real-time answers for coding and job interviews
+### Free & open-source AI interview copilot: real-time answers for coding and job interviews
 
 **No subscription. No sign-up. No paywall.** A free alternative to paid interview copilots like Cluely, Interview Coder, Final Round AI and LockedIn AI.
 
@@ -24,7 +24,7 @@
 
 ---
 
-**AI Interview Helper** is a desktop AI copilot for technical interviews. It listens to the interviewer's question, transcribes it with Whisper, and shows a ready answer in seconds. Press one hotkey and it reads your screen to solve a coding task (LeetCode, HackerRank, live coding), a system design diagram or a quiz. It works with **Groq, Claude, Gemini, ChatGPT, DeepSeek, GLM** or a **local Ollama model**, so you choose the AI and you never pay a subscription.
+**AI Interview Helper** is a free, open-source AI interview copilot (an AI assistant on the candidate's side, not an AI interviewer) for technical and job interviews. It listens to the interviewer's question, transcribes it with Whisper, and shows a ready answer in seconds. Press one hotkey and it reads your screen to solve a coding task (LeetCode, HackerRank, live coding), a system design diagram or a quiz. It works with **Groq, Claude, Gemini, ChatGPT, DeepSeek, GLM** or a **local Ollama model**, so you choose the AI and you never pay a subscription.
 
 ## 💸 Free vs paid interview copilots
 
@@ -38,6 +38,8 @@
 | Where your data goes | ✅ Straight to the AI provider you pick | Through the vendor's servers |
 
 > **How is it free?** The app itself costs nothing. For the AI part you either use a free-tier API key (Groq, Gemini and Z.ai all have one) or run a model locally with Ollama. No middleman, no markup.
+
+Detailed comparisons: [Free Cluely alternative](https://pyk-boo.github.io/ai-interview-helper/cluely-alternative/) · [Free Interview Coder alternative](https://pyk-boo.github.io/ai-interview-helper/interview-coder-alternative/) · [Free Final Round AI alternative](https://pyk-boo.github.io/ai-interview-helper/final-round-ai-alternative/)
 
 ## ✨ Features
 
@@ -76,7 +78,7 @@ npm start
 
 On Windows you can simply double-click **`start.bat`**. It installs everything on the first run.
 
-**Get a free API key in 1 minute:** sign up at [console.groq.com](https://console.groq.com), create a key, paste it into the app settings (⚙). One Groq key covers both chat and speech recognition.
+**Get a free API key in 1 minute:** sign up at [console.groq.com](https://console.groq.com), create a key, paste it into the app settings (⚙). One Groq key covers both chat and speech recognition. Full walkthrough: [How to get a free AI interview assistant in 5 minutes](https://pyk-boo.github.io/ai-interview-helper/free-ai-interview-assistant/).
 
 ## ⌨️ Hotkeys
 

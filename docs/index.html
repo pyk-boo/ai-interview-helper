@@ -1,243 +1,79 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>AI Interview Helper — Free AI Interview Assistant & Copilot (Open Source)</title>
-<meta name="description" content="Free, open-source AI interview assistant for Windows and macOS. Get real-time answers in coding and job interviews from voice transcription and screenshots. Works with Groq, Claude, Gemini, GPT, DeepSeek and local Ollama. No subscription."/>
-<meta name="keywords" content="ai interview assistant, free ai interview helper, interview copilot, ai interview copilot free, coding interview ai, leetcode ai helper, cluely alternative, interview coder alternative, final round ai alternative, real-time interview answers"/>
-<meta name="author" content="pyk-boo"/>
-<meta name="robots" content="index, follow"/>
-<meta name="theme-color" content="#090b10"/>
-<link rel="canonical" href="https://pyk-boo.github.io/ai-interview-helper/"/>
-<link rel="icon" type="image/png" href="icon.png"/>
-
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="AI Interview Helper"/>
-<meta property="og:title" content="AI Interview Helper — Free AI Interview Assistant"/>
-<meta property="og:description" content="Real-time answers for coding and job interviews, from your voice and your screen. Free and open source. No subscription."/>
-<meta property="og:url" content="https://pyk-boo.github.io/ai-interview-helper/"/>
-<meta property="og:image" content="https://pyk-boo.github.io/ai-interview-helper/og.png"/>
-<meta property="og:image:width" content="1280"/>
-<meta property="og:image:height" content="640"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="AI Interview Helper — Free AI Interview Assistant"/>
-<meta name="twitter:description" content="Real-time answers for coding and job interviews. Free, open source, 7 AI providers."/>
-<meta name="twitter:image" content="https://pyk-boo.github.io/ai-interview-helper/og.png"/>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "AI Interview Helper",
-  "applicationCategory": "ProductivityApplication",
-  "operatingSystem": "Windows, macOS",
-  "description": "Free, open-source AI interview assistant that gives real-time answers from voice transcription and screenshots.",
-  "url": "https://pyk-boo.github.io/ai-interview-helper/",
-  "downloadUrl": "https://github.com/pyk-boo/ai-interview-helper/releases/latest",
-  "softwareVersion": "2.0.1",
-  "license": "https://opensource.org/licenses/MIT",
-  "author": { "@type": "Person", "name": "pyk-boo", "url": "https://github.com/pyk-boo" },
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is AI Interview Helper really free?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The app is open source under the MIT license and has no paid plan. You only need an AI key: Groq, Gemini and Z.ai offer free tiers, and with Ollama it runs fully offline at zero cost." } },
-    { "@type": "Question", "name": "Is it a free alternative to Cluely or Interview Coder?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. It covers the same core workflow (listen to the question, read the screen, suggest an answer) without a subscription and with any AI model you want." } },
-    { "@type": "Question", "name": "Does it work for coding interviews on LeetCode, HackerRank or CodeSignal?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Press Ctrl+Shift+Space and the task on your screen is sent to a vision model, which returns working code with a short explanation." } },
-    { "@type": "Question", "name": "Where are my API keys stored?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Only on your computer. Requests go directly from your machine to the AI provider you choose. There is no server in between." } },
-    { "@type": "Question", "name": "Which languages does it support?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Whisper transcribes many languages, and the assistant replies in the language of the question, including English, Spanish, Russian and many more." } }
-  ]
-}
-</script>
-
-<style>
-:root{
-  --bg:#090b10;--surface:#0e1118;--surface2:#141820;
-  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
-  --accent:#00d4ff;--accent2:#7c6af7;--green:#00e5a0;--yellow:#ffd166;
-  --text:#dde3f0;--muted:#9aa3ba;--dim:#5b6380;
-  --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
-  --mono:Consolas,"SFMono-Regular",Menlo,monospace;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-.bg-fx{position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:
-    radial-gradient(600px 400px at 10% 0%,rgba(0,212,255,.13),transparent 70%),
-    radial-gradient(700px 500px at 100% 100%,rgba(124,106,247,.14),transparent 70%),
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px) 0 0/40px 40px,
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px) 0 0/40px 40px;}
-
-/* nav */
-nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(9,11,16,.72);border-bottom:1px solid var(--border)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
-.brand img{width:28px;height:28px}
-.nav-links{display:flex;gap:24px;font-size:14px;color:var(--muted)}
-.nav-links a:hover{color:var(--text)}
-@media (max-width:720px){.nav-links{display:none}}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:15px;transition:transform .15s,box-shadow .15s,background .15s;border:1px solid transparent;white-space:nowrap}
-.btn:hover{transform:translateY(-1px)}
-.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06070b;box-shadow:0 8px 30px rgba(0,212,255,.25)}
-.btn-primary:hover{box-shadow:0 10px 40px rgba(0,212,255,.4)}
-.btn-ghost{background:var(--surface2);border-color:var(--border2);color:var(--text)}
-.btn-ghost:hover{border-color:var(--accent)}
-.btn-sm{padding:8px 14px;font-size:13px;border-radius:10px}
-.btn svg{width:18px;height:18px;flex-shrink:0}
-
-/* hero */
-.hero{padding:80px 0 60px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-@media (max-width:920px){.hero{grid-template-columns:1fr;padding-top:48px}}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;border:1px solid rgba(0,229,160,.5);background:rgba(0,229,160,.08);color:var(--green);font-size:13px;font-weight:700;letter-spacing:.08em}
-.pill i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
-h1{font-size:clamp(40px,6.4vw,72px);line-height:1.04;font-weight:800;letter-spacing:-.02em;margin:22px 0 20px}
-h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:560px}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin:32px 0 16px}
-.sub-cta{font-size:13px;color:var(--dim)}
-.sub-cta a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
-
-/* mock window */
-.mock{background:var(--bg);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(124,106,247,.08)}
-.mock-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
-.mock-logo{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em}
-.ring{width:18px;height:18px;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center}
-.ring::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px var(--accent);animation:breathe 2.5s ease-in-out infinite}
-@keyframes breathe{50%{opacity:.3}}
-.badge{font-family:var(--mono);font-size:10px;padding:3px 9px;border-radius:999px;border:1px solid var(--green);color:var(--green);letter-spacing:.1em}
-.mock-body{padding:18px 16px;display:flex;flex-direction:column;gap:10px}
-.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--dim)}
-.lbl.ai{color:var(--accent2)}
-.bubble{background:var(--surface2);border-radius:10px;padding:12px 14px;font-size:14px}
-.answer{background:var(--surface);border:1px solid rgba(124,106,247,.35);border-radius:10px;padding:12px 14px;font-size:14px}
-pre{margin-top:10px;background:#05060a;border-radius:8px;padding:12px 14px;font-family:var(--mono);font-size:12.5px;line-height:1.7;overflow-x:auto;color:var(--text)}
-.k{color:var(--accent2)}.f{color:var(--accent)}.t{color:var(--yellow)}
-.typing::after{content:"▋";color:var(--accent);animation:blink 1s steps(1) infinite;margin-left:2px}
-@keyframes blink{50%{opacity:0}}
-
-/* sections */
-section{padding:72px 0}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase}
-h2{font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-.01em;margin:10px 0 14px}
-.sec-lead{color:var(--muted);max-width:640px;font-size:17px}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:36px}
-.card{background:linear-gradient(180deg,var(--surface),rgba(14,17,24,.6));border:1px solid var(--border);border-radius:16px;padding:22px;transition:border-color .2s,transform .2s}
-.card:hover{border-color:var(--border2);transform:translateY(-2px)}
-.card .ico{font-size:26px;margin-bottom:12px}
-.card h3{font-size:17px;margin-bottom:6px}
-.card p{font-size:14.5px;color:var(--muted)}
-
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;counter-reset:s}
-@media (max-width:820px){.steps{grid-template-columns:1fr}}
-.step{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px 22px}
-.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06070b;font-weight:800;margin-bottom:14px}
-.step h3{font-size:17px;margin-bottom:6px}
-.step p{font-size:14.5px;color:var(--muted)}
-kbd{font-family:var(--mono);font-size:12px;padding:2px 7px;border-radius:6px;border:1px solid var(--border2);border-bottom-width:2px;background:var(--surface2);color:var(--text);white-space:nowrap}
-
-/* table */
-.tbl-wrap{margin-top:36px;border:1px solid var(--border);border-radius:16px;overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:560px;font-size:15px}
-th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--border)}
-tr:last-child td{border-bottom:none}
-thead th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);background:var(--surface)}
-thead th.us{color:var(--accent)}
-td.us{color:var(--text);font-weight:600;background:rgba(0,212,255,.04)}
-td.them{color:var(--dim)}
-.note{margin-top:18px;padding:16px 18px;border-left:3px solid var(--green);background:rgba(0,229,160,.05);border-radius:0 12px 12px 0;color:var(--muted);font-size:15px}
-.note b{color:var(--text)}
-
-.providers{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.prov{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;background:var(--surface);border:1px solid var(--border);font-weight:600;font-size:15px}
-.prov i{width:9px;height:9px;border-radius:50%}
-.prov small{font-weight:700;font-size:10px;letter-spacing:.08em;color:var(--green);border:1px solid rgba(0,229,160,.4);border-radius:6px;padding:1px 5px}
-
-/* faq */
-.faq{margin-top:32px;display:flex;flex-direction:column;gap:10px;max-width:820px}
-details{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:0 20px}
-details[open]{border-color:var(--border2)}
-summary{list-style:none;cursor:pointer;padding:18px 0;font-weight:600;font-size:16px;display:flex;justify-content:space-between;gap:16px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1;transition:transform .2s}
-details[open] summary::after{transform:rotate(45deg)}
-details p{padding:0 0 18px;color:var(--muted);font-size:15px}
-
-/* final cta */
-.final{text-align:center;background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(124,106,247,.1));border:1px solid var(--border2);border-radius:24px;padding:56px 24px}
-.final .cta{justify-content:center}
-.porsche{margin-top:28px;font-size:14px;color:var(--dim)}
-.porsche a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
-
-footer{border-top:1px solid var(--border);padding:28px 0;color:var(--dim);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-footer a:hover{color:var(--text)}
-.disclaimer{max-width:720px}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Interview Helper: Free Open-Source AI Interview Copilot</title>
+<meta name="description" content="Free, open-source AI interview copilot for Windows and macOS. Real-time answers for coding and job interviews from your voice and screen. No subscription.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="pyk-boo">
+<meta name="theme-color" content="#090b10">
+<link rel="canonical" href="https://pyk-boo.github.io/ai-interview-helper/">
+<link rel="alternate" hreflang="en" href="https://pyk-boo.github.io/ai-interview-helper/">
+<link rel="alternate" hreflang="es" href="https://pyk-boo.github.io/ai-interview-helper/es/">
+<link rel="alternate" hreflang="pt" href="https://pyk-boo.github.io/ai-interview-helper/pt/">
+<link rel="alternate" hreflang="de" href="https://pyk-boo.github.io/ai-interview-helper/de/">
+<link rel="alternate" hreflang="fr" href="https://pyk-boo.github.io/ai-interview-helper/fr/">
+<link rel="alternate" hreflang="x-default" href="https://pyk-boo.github.io/ai-interview-helper/">
+<link rel="icon" type="image/svg+xml" href="/ai-interview-helper/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/ai-interview-helper/favicon-32.png">
+<link rel="apple-touch-icon" href="/ai-interview-helper/apple-touch-icon.png">
+<link rel="manifest" href="/ai-interview-helper/site.webmanifest">
+<link rel="stylesheet" href="/ai-interview-helper/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AI Interview Helper">
+<meta property="og:title" content="AI Interview Helper: the free, open-source AI interview copilot">
+<meta property="og:description" content="Real-time answers for coding and job interviews, from your voice and your screen. Free, open source, 7 AI providers.">
+<meta property="og:url" content="https://pyk-boo.github.io/ai-interview-helper/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pyk-boo.github.io/ai-interview-helper/og.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="AI Interview Helper, a free open-source AI interview copilot">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Interview Helper: the free, open-source AI interview copilot">
+<meta name="twitter:description" content="Real-time answers for coding and job interviews, from your voice and your screen. Free, open source, 7 AI providers.">
+<meta name="twitter:image" content="https://pyk-boo.github.io/ai-interview-helper/og.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Interview Helper","alternateName":["AI Interview Copilot","AI interview assistant"],"applicationCategory":"BusinessApplication","applicationSubCategory":"Interview preparation","operatingSystem":"Windows 10, Windows 11, macOS","softwareVersion":"2.0.1","description":"Free, open-source AI interview copilot for Windows and macOS. Real-time answers for coding and job interviews from your voice and screen. No subscription.","inLanguage":"en","url":"https://pyk-boo.github.io/ai-interview-helper/","downloadUrl":"https://github.com/pyk-boo/ai-interview-helper/releases/latest","installUrl":"https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe","image":"https://pyk-boo.github.io/ai-interview-helper/og.png","screenshot":"https://pyk-boo.github.io/ai-interview-helper/og.png","license":"https://opensource.org/licenses/MIT","isAccessibleForFree":true,"codeRepository":"https://github.com/pyk-boo/ai-interview-helper","author":{"@type":"Person","name":"pyk-boo","url":"https://github.com/pyk-boo"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Is there a free AI interview copilot?","acceptedAnswer":{"@type":"Answer","text":"Yes. AI Interview Helper is a free, open-source AI interview copilot for Windows and macOS. There is no paid plan: you bring a free AI key (Groq, Gemini or Z.ai) or run a local model with Ollama."}},{"@type":"Question","name":"Is AI Interview Helper open source?","acceptedAnswer":{"@type":"Answer","text":"Yes. The full source code is on GitHub under the MIT license: github.com/pyk-boo/ai-interview-helper. You can read it, change it or build the app yourself."}},{"@type":"Question","name":"Is it an AI interviewer?","acceptedAnswer":{"@type":"Answer","text":"Not quite. An AI interviewer asks you questions. AI Interview Helper is on the candidate's side: it listens to the question and suggests an answer. For practice, run a mock interview with a friend or a recorded question list and see how a strong answer could sound."}},{"@type":"Question","name":"Is it a free alternative to Cluely or Interview Coder?","acceptedAnswer":{"@type":"Answer","text":"Yes. It covers the same core workflow (listen to the question, read the screen, suggest an answer) without a subscription and with any AI model you want."}},{"@type":"Question","name":"Does it work for coding interviews on LeetCode, HackerRank or CodeSignal?","acceptedAnswer":{"@type":"Answer","text":"Yes. Press Ctrl+Shift+Space and the task on your screen goes to a vision model, which returns working code with a short explanation."}},{"@type":"Question","name":"Which AI model gives the best answers?","acceptedAnswer":{"@type":"Answer","text":"For speed, Groq (GPT-OSS 20B). For the hardest coding and system design questions, Claude Opus or GPT-OSS 120B. For screenshots, a vision model such as Gemini Flash or Claude."}},{"@type":"Question","name":"Where are my API keys stored?","acceptedAnswer":{"@type":"Answer","text":"Only on your computer. Requests go directly from your machine to the AI provider you choose. There is no server in between."}},{"@type":"Question","name":"Windows says \"Windows protected your PC\". Is it safe?","acceptedAnswer":{"@type":"Answer","text":"The app isn't code-signed yet (certificates cost money, and this project is free). Click \"More info\" → \"Run anyway\". The full source code is on GitHub, so you can check it or build it yourself."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AI Interview Helper","url":"https://pyk-boo.github.io/ai-interview-helper/","inLanguage":"en"}</script>
 </head>
 <body>
 <div class="bg-fx"></div>
-
-<nav>
+<nav class="top" aria-label="Main">
   <div class="wrap">
-    <a class="brand" href="#"><img src="icon.png" alt="" width="28" height="28"/>AI Interview Helper</a>
+    <a class="brand" href="/ai-interview-helper/"><img src="/ai-interview-helper/icon-192.png" alt="" width="28" height="28">AI Interview Helper</a>
     <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="#compare">Free vs paid</a>
-      <a href="#faq">FAQ</a>
+      <a href="/ai-interview-helper/#features">Features</a>
+      <a href="/ai-interview-helper/#compare">Free vs paid</a>
+      <a href="/ai-interview-helper/#alternatives">Alternatives</a>
+      <a href="/ai-interview-helper/#guides">Guides</a>
+      <a href="/ai-interview-helper/#faq">FAQ</a>
     </div>
-    <a class="btn btn-ghost btn-sm" href="https://github.com/pyk-boo/ai-interview-helper">
-      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-      Star on GitHub
-    </a>
+    <div class="nav-right">
+      <div class="langs" aria-label="Language"><a href="/ai-interview-helper/" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="/ai-interview-helper/es/" hreflang="es" lang="es" title="Español">ES</a><a href="/ai-interview-helper/pt/" hreflang="pt" lang="pt" title="Português">PT</a><a href="/ai-interview-helper/de/" hreflang="de" lang="de" title="Deutsch">DE</a><a href="/ai-interview-helper/fr/" hreflang="fr" lang="fr" title="Français">FR</a></div>
+      <a class="btn btn-ghost btn-sm" href="https://github.com/pyk-boo/ai-interview-helper"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a>
+    </div>
   </div>
 </nav>
-
 <header class="wrap hero">
   <div>
     <span class="pill"><i></i>100% FREE · OPEN SOURCE</span>
-    <h1>The free <span class="grad">AI interview assistant</span></h1>
-    <p class="lead">Hears the interviewer's question, reads your screen, and shows a ready answer in seconds. Coding tasks, system design, behavioral questions. No subscription, no sign-up.</p>
+    <h1>The free, open-source <span class="grad">AI interview copilot</span></h1>
+    <p class="lead">AI Interview Helper hears the interviewer's question, reads your screen and shows a ready answer in seconds. Coding tasks, system design, behavioral questions. No subscription, no sign-up, code on GitHub.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zm0 13 7.5 1.1v-7H3zm8.4 1.2L21 21v-8.5h-9.6zm0-15.4v7.2H21V3z"/></svg>
-        Download for Windows
-      </a>
-      <a class="btn btn-ghost" href="https://github.com/pyk-boo/ai-interview-helper#-quick-start">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg>
-        Run from source
-      </a>
+      <a class="btn btn-primary" href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zm0 13 7.5 1.1v-7H3zm8.4 1.2L21 21v-8.5h-9.6zm0-15.4v7.2H21V3z"/></svg> Download for Windows</a>
+      <a class="btn btn-ghost" href="https://github.com/pyk-boo/ai-interview-helper#-quick-start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg> Run from source</a>
     </div>
-    <p class="sub-cta">Windows 10/11 · macOS from source · <a href="https://github.com/pyk-boo/ai-interview-helper/releases/latest">All downloads</a></p>
+    <p class="sub-cta">Windows 10/11 · macOS from source · MIT license · <a href="https://github.com/pyk-boo/ai-interview-helper/releases/latest">All downloads</a></p>
   </div>
-
-  <div class="mock" aria-label="App preview">
-    <div class="mock-head">
-      <div class="mock-logo"><span class="ring"></span>AI INTERVIEW HELPER</div>
-      <span class="badge">LISTENING</span>
-    </div>
+  <div class="mock" role="img" aria-label="App preview: the interviewer asks a coding question and AI Interview Helper shows the answer with code">
+    <div class="mock-head"><div class="mock-logo"><span class="ring"></span>AI INTERVIEW HELPER</div><span class="badge">LISTENING</span></div>
     <div class="mock-body">
       <span class="lbl">🎧 INTERVIEWER</span>
       <div class="bubble">How would you find duplicates in an array in O(n)?</div>
       <span class="lbl ai">✦ AI ANSWER</span>
-      <div class="answer">
-        I'd use a hash set: one pass, and each lookup is O(1) on average.
+      <div class="answer">I'd use a hash set: one pass, and each lookup is O(1) on average.
 <pre><span class="k">def</span> <span class="f">find_dups</span>(nums):
     seen, dups = <span class="t">set</span>(), <span class="t">set</span>()
     <span class="k">for</span> n <span class="k">in</span> nums:
@@ -250,54 +86,53 @@ footer a:hover{color:var(--text)}
 </header>
 
 <main>
-<section id="features">
+<section id="features" aria-labelledby="f-h">
   <div class="wrap">
     <span class="eyebrow">Features</span>
-    <h2>Everything a paid interview copilot does. For $0.</h2>
-    <p class="sec-lead">A lightweight desktop overlay that stays on top of Zoom, Google Meet, Teams or your browser.</p>
-    <div class="grid">
-      <div class="card"><div class="ico">🎙</div><h3>Voice → answer</h3><p>Real-time speech-to-text with Whisper. Answers automatically when the interviewer stops talking.</p></div>
-      <div class="card"><div class="ico">🖼</div><h3>Screenshot → solution</h3><p>One hotkey sends your screen to a vision model. LeetCode, HackerRank, SQL, diagrams, quizzes.</p></div>
-      <div class="card"><div class="ico">🗣</div><h3>Speaker separation</h3><p>Tells the interviewer apart from your mic and only answers the interviewer's questions.</p></div>
-      <div class="card"><div class="ico">🔀</div><h3>7 AI providers</h3><p>Groq, Claude, Gemini, GPT, DeepSeek, GLM or local Ollama, with automatic fallback on rate limits.</p></div>
-      <div class="card"><div class="ico">👤</div><h3>Answers in your voice</h3><p>Paste your resume and target role. Answers come in first person, based on your real experience.</p></div>
-      <div class="card"><div class="ico">🔒</div><h3>Private by design</h3><p>Keys stay on your computer. No account, no telemetry, no backend in between.</p></div>
+    <h2 id="f-h">Everything a paid AI interview assistant does. For $0.</h2>
+    <p class="sec-lead">A lightweight desktop overlay for Windows and macOS that stays on top of Zoom, Google Meet, Microsoft Teams or your browser.</p>
+    <div class="grid grid-3">
+      <div class="card"><div class="ico" aria-hidden="true">🎙</div><h3>Voice → answer</h3><p>Real-time speech-to-text with Whisper. The AI answers automatically when the interviewer stops talking.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">🖼</div><h3>Screenshot → solution</h3><p>One hotkey sends your screen to a vision model: LeetCode, HackerRank, CodeSignal, SQL, diagrams, quizzes.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">🗣</div><h3>Speaker separation</h3><p>Tells the interviewer apart from your microphone and only answers the interviewer's questions.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">🔀</div><h3>7 AI providers</h3><p>Groq, Claude, Gemini, GPT, DeepSeek, GLM or a local model with Ollama, with automatic fallback on rate limits.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">👤</div><h3>Answers in your voice</h3><p>Paste your resume and target role. Answers come in first person, based on your real experience.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">🌐</div><h3>Any language</h3><p>Ask in English, Spanish, Russian, German, French or many more. The answer comes back in the same language.</p></div>
     </div>
   </div>
 </section>
 
-<section id="how">
+<section id="how" aria-labelledby="h-h">
   <div class="wrap">
     <span class="eyebrow">How it works</span>
-    <h2>Up and running in 2 minutes</h2>
+    <h2 id="h-h">Up and running in 2 minutes</h2>
     <div class="steps">
       <div class="step"><h3>Download &amp; open</h3><p>Grab the Windows installer or the portable .exe. Nothing else to install.</p></div>
-      <div class="step"><h3>Paste a free key</h3><p>Get a free key at <a href="https://console.groq.com" style="color:var(--accent)">console.groq.com</a> and paste it into settings. It covers chat and voice.</p></div>
+      <div class="step"><h3>Paste a free key</h3><p>Get a free key at <a href="https://console.groq.com">console.groq.com</a> and paste it into settings. It covers chat and voice.</p></div>
       <div class="step"><h3>Press a hotkey</h3><p><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd> to listen, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> to solve what's on screen.</p></div>
     </div>
   </div>
 </section>
 
-<section id="compare">
+<section id="compare" aria-labelledby="c-h">
   <div class="wrap">
     <span class="eyebrow">Free vs paid</span>
-    <h2>A free alternative to Cluely, Interview Coder &amp; Final Round AI</h2>
-    <p class="sec-lead">Same core workflow. No monthly bill.</p>
+    <h2 id="c-h">A free alternative to Cluely, Interview Coder &amp; Final Round AI</h2>
+    <p class="sec-lead">Same core workflow as paid interview copilots. No monthly bill.</p>
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th></th><th class="us">AI Interview Helper</th><th>Typical paid copilots</th></tr></thead>
+        <thead><tr><th scope="col"><span class="sr">Feature</span></th><th scope="col" class="us">AI Interview Helper</th><th scope="col">Typical paid copilots</th></tr></thead>
         <tbody>
-          <tr><td>Price</td><td class="us">✅ $0, forever</td><td class="them">Monthly subscription</td></tr>
-          <tr><td>Account / sign-up</td><td class="us">✅ Not needed</td><td class="them">Required</td></tr>
-          <tr><td>Source code</td><td class="us">✅ Open (MIT)</td><td class="them">Usually closed</td></tr>
-          <tr><td>Choice of AI model</td><td class="us">✅ 7 providers + any local model</td><td class="them">Fixed by the vendor</td></tr>
-          <tr><td>Works offline</td><td class="us">✅ With Ollama</td><td class="them">No</td></tr>
-          <tr><td>Where your data goes</td><td class="us">✅ Straight to the AI you pick</td><td class="them">Through the vendor's servers</td></tr>
+          <tr><th scope="row">Price</th><td class="us">✅ $0, forever</td><td class="them">Monthly subscription</td></tr>
+          <tr><th scope="row">Account / sign-up</th><td class="us">✅ Not needed</td><td class="them">Required</td></tr>
+          <tr><th scope="row">Source code</th><td class="us">✅ Open (MIT) on GitHub</td><td class="them">Usually closed</td></tr>
+          <tr><th scope="row">Choice of AI model</th><td class="us">✅ 7 providers + any local model</td><td class="them">Set by the vendor</td></tr>
+          <tr><th scope="row">Works offline</th><td class="us">✅ Yes, with Ollama</td><td class="them">No</td></tr>
+          <tr><th scope="row">Where your data goes</th><td class="us">✅ Straight to the AI you pick</td><td class="them">Through the vendor's servers</td></tr>
         </tbody>
       </table>
     </div>
     <p class="note"><b>How is it free?</b> The app costs nothing. For the AI part, use a free-tier key (Groq, Gemini and Z.ai all have one) or run a model locally with Ollama. No middleman, no markup.</p>
-
     <div class="providers">
       <span class="prov"><i style="background:#f55036"></i>Groq <small>FREE</small></span>
       <span class="prov"><i style="background:#c87941"></i>Claude</span>
@@ -310,29 +145,64 @@ footer a:hover{color:var(--text)}
   </div>
 </section>
 
-<section id="faq">
+<section id="alternatives" aria-labelledby="a-h">
+  <div class="wrap">
+    <span class="eyebrow">Alternatives</span>
+    <h2 id="a-h">Looking for a free alternative?</h2>
+    <p class="sec-lead">Side-by-side comparisons with the best-known paid AI interview tools.</p>
+    <div class="grid grid-3">
+      <a class="card" href="/ai-interview-helper/cluely-alternative/"><h3>Free Cluely alternative</h3><p>Cluely vs AI Interview Helper: price, features, AI models and privacy.</p><span class="more">Compare →</span></a>
+      <a class="card" href="/ai-interview-helper/interview-coder-alternative/"><h3>Free Interview Coder alternative</h3><p>Interview Coder vs AI Interview Helper for coding interviews and LeetCode.</p><span class="more">Compare →</span></a>
+      <a class="card" href="/ai-interview-helper/final-round-ai-alternative/"><h3>Free Final Round AI alternative</h3><p>Final Round AI vs AI Interview Helper: what you get without a subscription.</p><span class="more">Compare →</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="guides" aria-labelledby="g-h">
+  <div class="wrap">
+    <span class="eyebrow">Guides</span>
+    <h2 id="g-h">Get the most out of it</h2>
+    <div class="grid grid-2">
+      <a class="card" href="/ai-interview-helper/free-ai-interview-assistant/"><div class="ico" aria-hidden="true">🛠</div><h3>How to get a free AI interview assistant</h3><p>Step by step: download, free Groq key, audio setup and the best models. About 5 minutes.</p><span class="more">Read the guide →</span></a>
+      <a class="card" href="/ai-interview-helper/practice-coding-interviews-with-ai/"><div class="ico" aria-hidden="true">🧠</div><h3>How to practice coding interviews with AI</h3><p>A free routine to prepare for LeetCode-style and live coding interviews with an AI copilot.</p><span class="more">Read the guide →</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="q-h">
   <div class="wrap">
     <span class="eyebrow">FAQ</span>
-    <h2>Questions people ask</h2>
+    <h2 id="q-h">Questions people ask</h2>
     <div class="faq">
-      <details><summary>Is AI Interview Helper really free?</summary><p>Yes. The app is open source under the MIT license and has no paid plan. You only need an AI key: Groq, Gemini and Z.ai offer free tiers, and with Ollama it runs fully offline at zero cost.</p></details>
+      <details><summary>Is there a free AI interview copilot?</summary><p>Yes. AI Interview Helper is a free, open-source AI interview copilot for Windows and macOS. There is no paid plan: you bring a free AI key (Groq, Gemini or Z.ai) or run a local model with Ollama.</p></details>
+      <details><summary>Is AI Interview Helper open source?</summary><p>Yes. The full source code is on GitHub under the MIT license: <a href="https://github.com/pyk-boo/ai-interview-helper">github.com/pyk-boo/ai-interview-helper</a>. You can read it, change it or build the app yourself.</p></details>
+      <details><summary>Is it an AI interviewer?</summary><p>Not quite. An AI interviewer asks you questions. AI Interview Helper is on the candidate's side: it listens to the question and suggests an answer. For practice, run a mock interview with a friend or a recorded question list and see how a strong answer could sound.</p></details>
       <details><summary>Is it a free alternative to Cluely or Interview Coder?</summary><p>Yes. It covers the same core workflow (listen to the question, read the screen, suggest an answer) without a subscription and with any AI model you want.</p></details>
-      <details><summary>Does it work for coding interviews on LeetCode, HackerRank or CodeSignal?</summary><p>Yes. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> and the task on your screen goes to a vision model, which returns working code with a short explanation.</p></details>
+      <details><summary>Does it work for coding interviews on LeetCode, HackerRank or CodeSignal?</summary><p>Yes. Press Ctrl+Shift+Space and the task on your screen goes to a vision model, which returns working code with a short explanation.</p></details>
       <details><summary>Which AI model gives the best answers?</summary><p>For speed, Groq (GPT-OSS 20B). For the hardest coding and system design questions, Claude Opus or GPT-OSS 120B. For screenshots, a vision model such as Gemini Flash or Claude.</p></details>
       <details><summary>Where are my API keys stored?</summary><p>Only on your computer. Requests go directly from your machine to the AI provider you choose. There is no server in between.</p></details>
-      <details><summary>Which languages does it support?</summary><p>Whisper transcribes many languages, and the assistant replies in the language of the question, including English, Spanish, Russian and many more.</p></details>
       <details><summary>Windows says "Windows protected your PC". Is it safe?</summary><p>The app isn't code-signed yet (certificates cost money, and this project is free). Click "More info" → "Run anyway". The full source code is on GitHub, so you can check it or build it yourself.</p></details>
     </div>
   </div>
 </section>
 
-<section>
+<section id="other-languages" aria-labelledby="ol-h">
+  <div class="wrap">
+    <span class="eyebrow">Other languages</span>
+    <h2 id="ol-h">Українською та російською</h2>
+    <div class="other-langs">
+      <div class="card" lang="uk"><h3>AI Interview Helper: безкоштовний AI-помічник для співбесід</h3><p>Безкоштовний AI-асистент для співбесід з відкритим кодом. Слухає питання інтерв'юера, читає екран і за кілька секунд показує готову відповідь: задачі з програмування, технічні співбесіди, питання про досвід. Працює з Groq, Claude, Gemini, GPT, DeepSeek і локальною Ollama. Без підписки та реєстрації. Безкоштовна альтернатива Cluely та Interview Coder. Відповідає українською, якщо питання українською.</p><a class="more" href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe">Завантажити для Windows безкоштовно →</a></div>
+      <div class="card" lang="ru"><h3>AI Interview Helper: бесплатный AI-помощник для собеседований</h3><p>Бесплатный AI-ассистент для собеседований с открытым кодом. Слушает вопрос интервьюера, читает экран и за несколько секунд показывает готовый ответ: задачи по программированию, технические собеседования, вопросы об опыте. Работает с Groq, Claude, Gemini, GPT, DeepSeek и локальной Ollama. Без подписки и регистрации. Бесплатная альтернатива Cluely и Interview Coder. Отвечает по-русски, если вопрос на русском.</p><a class="more" href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe">Скачать для Windows бесплатно →</a></div>
+    </div>
+  </div>
+</section>
+<section aria-labelledby="final-h">
   <div class="wrap">
     <div class="final">
-      <h2>Stop paying for interview copilots</h2>
-      <p class="sec-lead" style="margin:0 auto">Download it, paste a free key, and you're ready for your next interview.</p>
+      <h2 id="final-h">Stop paying for interview copilots</h2>
+      <p class="sec-lead">Download it, paste a free key, and you're ready for your next interview.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe">Download for Windows</a>
+        <a class="btn btn-primary" href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zm0 13 7.5 1.1v-7H3zm8.4 1.2L21 21v-8.5h-9.6zm0-15.4v7.2H21V3z"/></svg> Download for Windows</a>
         <a class="btn btn-ghost" href="https://github.com/pyk-boo/ai-interview-helper">⭐ Star on GitHub</a>
       </div>
       <p class="porsche">Free forever. But if it helped you land an offer, you can chip in to the author's <a href="https://github.com/pyk-boo/ai-interview-helper#-support-the-project">Porsche 911 fund</a> 🏎️</p>
@@ -340,11 +210,21 @@ footer a:hover{color:var(--text)}
   </div>
 </section>
 </main>
-
 <footer>
-  <div class="wrap">
-    <span>© 2026 <a href="https://github.com/pyk-boo">pyk-boo</a> · MIT License</span>
-    <span class="disclaimer">For learning and interview preparation. Using it in real interviews may violate company or platform rules; that responsibility is yours. Cluely, Interview Coder and Final Round AI are trademarks of their respective owners; this project is not affiliated with them.</span>
+  <div class="wrap foot">
+    <div>
+      <p><a href="/ai-interview-helper/"><strong>AI Interview Helper</strong></a> v2.0.1 · © 2026 <a href="https://github.com/pyk-boo">pyk-boo</a> · MIT License</p>
+      <p>For learning and interview preparation. Using it in real interviews may violate company or platform rules; that responsibility is yours.</p>
+      <p>Cluely, Interview Coder and Final Round AI are trademarks of their respective owners. This project is not affiliated with them.</p>
+    </div>
+    <div><h4>Product</h4><ul>
+      <li><a href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe">Download for Windows</a></li>
+      <li><a href="https://github.com/pyk-boo/ai-interview-helper/releases/latest">All releases</a></li>
+      <li><a href="https://github.com/pyk-boo/ai-interview-helper">Source code on GitHub</a></li>
+      <li><a href="https://github.com/pyk-boo/ai-interview-helper#-support-the-project">Support the project</a></li>
+    </ul></div>
+    <div><h4>Alternatives</h4><ul><li><a href="/ai-interview-helper/cluely-alternative/">Free Cluely alternative</a></li><li><a href="/ai-interview-helper/interview-coder-alternative/">Free Interview Coder alternative</a></li><li><a href="/ai-interview-helper/final-round-ai-alternative/">Free Final Round AI alternative</a></li></ul><h4 style="margin-top:18px">Guides</h4><ul><li><a href="/ai-interview-helper/free-ai-interview-assistant/">Set up a free AI interview assistant</a></li><li><a href="/ai-interview-helper/practice-coding-interviews-with-ai/">Practice coding interviews with AI</a></li></ul></div>
+    <div><h4>Languages</h4><ul><li><a href="/ai-interview-helper/" hreflang="en" lang="en">English</a></li><li><a href="/ai-interview-helper/es/" hreflang="es" lang="es">Español</a></li><li><a href="/ai-interview-helper/pt/" hreflang="pt" lang="pt">Português</a></li><li><a href="/ai-interview-helper/de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="/ai-interview-helper/fr/" hreflang="fr" lang="fr">Français</a></li></ul></div>
   </div>
 </footer>
 </body>

@@ -1,0 +1,21 @@
+{
+  "name": "AI Interview Helper",
+  "short_name": "Interview Helper",
+  "start_url": "/ai-interview-helper/",
+  "scope": "/ai-interview-helper/",
+  "display": "standalone",
+  "background_color": "#090b10",
+  "theme_color": "#090b10",
+  "icons": [
+    {
+      "src": "/ai-interview-helper/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/ai-interview-helper/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

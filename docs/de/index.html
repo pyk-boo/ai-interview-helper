@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Interview Helper: kostenloser KI-Interview-Assistent</title>
+<meta name="description" content="Kostenloser Open-Source-KI-Copilot für Vorstellungsgespräche und Coding-Interviews. Antworten in Echtzeit aus Sprache und Bildschirm. Kein Abo.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="pyk-boo">
+<meta name="theme-color" content="#090b10">
+<link rel="canonical" href="https://pyk-boo.github.io/ai-interview-helper/de/">
+<link rel="alternate" hreflang="en" href="https://pyk-boo.github.io/ai-interview-helper/">
+<link rel="alternate" hreflang="es" href="https://pyk-boo.github.io/ai-interview-helper/es/">
+<link rel="alternate" hreflang="pt" href="https://pyk-boo.github.io/ai-interview-helper/pt/">
+<link rel="alternate" hreflang="de" href="https://pyk-boo.github.io/ai-interview-helper/de/">
+<link rel="alternate" hreflang="fr" href="https://pyk-boo.github.io/ai-interview-helper/fr/">
+<link rel="alternate" hreflang="x-default" href="https://pyk-boo.github.io/ai-interview-helper/">
+<link rel="icon" type="image/svg+xml" href="/ai-interview-helper/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/ai-interview-helper/favicon-32.png">
+<link rel="apple-touch-icon" href="/ai-interview-helper/apple-touch-icon.png">
+<link rel="manifest" href="/ai-interview-helper/site.webmanifest">
+<link rel="stylesheet" href="/ai-interview-helper/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AI Interview Helper">
+<meta property="og:title" content="AI Interview Helper: kostenloser Open-Source-KI-Copilot für Vorstellungsgespräche">
+<meta property="og:description" content="Antworten in Echtzeit für Coding-Interviews und Vorstellungsgespräche, aus Sprache und Bildschirm. Kostenlos, Open Source, 7 KI-Anbieter.">
+<meta property="og:url" content="https://pyk-boo.github.io/ai-interview-helper/de/">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://pyk-boo.github.io/ai-interview-helper/og.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="AI Interview Helper, a free open-source AI interview copilot">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Interview Helper: kostenloser Open-Source-KI-Copilot für Vorstellungsgespräche">
+<meta name="twitter:description" content="Antworten in Echtzeit für Coding-Interviews und Vorstellungsgespräche, aus Sprache und Bildschirm. Kostenlos, Open Source, 7 KI-Anbieter.">
+<meta name="twitter:image" content="https://pyk-boo.github.io/ai-interview-helper/og.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Interview Helper","alternateName":["AI Interview Copilot","AI interview assistant"],"applicationCategory":"BusinessApplication","applicationSubCategory":"Interview preparation","operatingSystem":"Windows 10, Windows 11, macOS","softwareVersion":"2.0.1","description":"Kostenloser Open-Source-KI-Copilot für Vorstellungsgespräche und Coding-Interviews. Antworten in Echtzeit aus Sprache und Bildschirm. Kein Abo.","inLanguage":"de","url":"https://pyk-boo.github.io/ai-interview-helper/de/","downloadUrl":"https://github.com/pyk-boo/ai-interview-helper/releases/latest","installUrl":"https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe","image":"https://pyk-boo.github.io/ai-interview-helper/og.png","screenshot":"https://pyk-boo.github.io/ai-interview-helper/og.png","license":"https://opensource.org/licenses/MIT","isAccessibleForFree":true,"codeRepository":"https://github.com/pyk-boo/ai-interview-helper","author":{"@type":"Person","name":"pyk-boo","url":"https://github.com/pyk-boo"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"de","mainEntity":[{"@type":"Question","name":"Gibt es einen kostenlosen KI-Interview-Assistenten?","acceptedAnswer":{"@type":"Answer","text":"Ja. AI Interview Helper ist ein kostenloser Open-Source-KI-Copilot für Interviews unter Windows und macOS. Es gibt keinen Bezahlplan: Du nutzt einen kostenlosen Schlüssel (Groq, Gemini oder Z.ai) oder ein lokales Modell mit Ollama."}},{"@type":"Question","name":"Ist das Open Source?","acceptedAnswer":{"@type":"Answer","text":"Ja. Der komplette Quellcode liegt unter MIT-Lizenz auf GitHub: github.com/pyk-boo/ai-interview-helper."}},{"@type":"Question","name":"Ist das ein KI-Interviewer?","acceptedAnswer":{"@type":"Answer","text":"Nicht ganz. Ein KI-Interviewer stellt dir Fragen. AI Interview Helper steht auf deiner Seite: Er hört die Frage und schlägt eine Antwort vor. Zum Üben eignet sich ein Probeinterview mit Freunden oder einer aufgenommenen Fragenliste."}},{"@type":"Question","name":"Ist es eine kostenlose Alternative zu Cluely oder Interview Coder?","acceptedAnswer":{"@type":"Answer","text":"Ja. Es deckt denselben Kernablauf ab (Frage hören, Bildschirm lesen, Antwort vorschlagen), ohne Abo und mit dem KI-Modell deiner Wahl."}},{"@type":"Question","name":"Funktioniert es für Coding-Interviews auf LeetCode oder HackerRank?","acceptedAnswer":{"@type":"Answer","text":"Ja. Drück Strg+Shift+Leertaste, und die Aufgabe auf dem Bildschirm geht an ein Vision-Modell, das funktionierenden Code mit kurzer Erklärung liefert."}},{"@type":"Question","name":"Antwortet es auf Deutsch?","acceptedAnswer":{"@type":"Answer","text":"Ja. Whisper erkennt Deutsch, und der Assistent antwortet in der Sprache der Frage."}},{"@type":"Question","name":"Wo werden meine API-Schlüssel gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nur auf deinem Computer. Anfragen gehen direkt von deinem Rechner zum KI-Anbieter. Es gibt keinen Server dazwischen."}}]}</script>
+</head>
+<body>
+<div class="bg-fx"></div>
+<nav class="top" aria-label="Hauptmenü">
+  <div class="wrap">
+    <a class="brand" href="/ai-interview-helper/de/"><img src="/ai-interview-helper/icon-192.png" alt="" width="28" height="28">AI Interview Helper</a>
+    <div class="nav-links">
+      <a href="/ai-interview-helper/de/#features">Funktionen</a>
+      <a href="/ai-interview-helper/de/#compare">Kostenlos vs. bezahlt</a>
+      <a href="/ai-interview-helper/de/#alternatives">Alternativen</a>
+      <a href="/ai-interview-helper/de/#guides">Anleitungen</a>
+      <a href="/ai-interview-helper/de/#faq">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <div class="langs" aria-label="Sprache"><a href="/ai-interview-helper/" hreflang="en" lang="en" title="English">EN</a><a href="/ai-interview-helper/es/" hreflang="es" lang="es" title="Español">ES</a><a href="/ai-interview-helper/pt/" hreflang="pt" lang="pt" title="Português">PT</a><a href="/ai-interview-helper/de/" hreflang="de" lang="de" title="Deutsch" aria-current="true">DE</a><a href="/ai-interview-helper/fr/" hreflang="fr" lang="fr" title="Français">FR</a></div>
+      <a class="btn btn-ghost btn-sm" href="https://github.com/pyk-boo/ai-interview-helper"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a>
+    </div>
+  </div>
+</nav>
+<header class="wrap hero">
+  <div>
+    <span class="pill"><i></i>100 % KOSTENLOS · OPEN SOURCE</span>
+    <h1>Der kostenlose <span class="grad">KI-Interview-Assistent</span> mit offenem Quellcode</h1>
+    <p class="lead">AI Interview Helper hört die Frage im Interview, liest deinen Bildschirm und zeigt in Sekunden eine fertige Antwort. Coding-Aufgaben, System Design, Verhaltensfragen. Kein Abo, keine Anmeldung.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zm0 13 7.5 1.1v-7H3zm8.4 1.2L21 21v-8.5h-9.6zm0-15.4v7.2H21V3z"/></svg> Für Windows herunterladen</a>
+      <a class="btn btn-ghost" href="https://github.com/pyk-boo/ai-interview-helper#-quick-start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg> Aus dem Quellcode starten</a>
+    </div>
+    <p class="sub-cta">Windows 10/11 · macOS aus dem Quellcode · MIT-Lizenz · <a href="https://github.com/pyk-boo/ai-interview-helper/releases/latest">Alle Downloads</a></p>
+  </div>
+  <div class="mock" role="img" aria-label="Vorschau: Im Interview kommt eine Programmierfrage, AI Interview Helper zeigt die Antwort mit Code">
+    <div class="mock-head"><div class="mock-logo"><span class="ring"></span>AI INTERVIEW HELPER</div><span class="badge">LISTENING</span></div>
+    <div class="mock-body">
+      <span class="lbl">🎧 INTERVIEWER</span>
+      <div class="bubble">Wie findest du Duplikate in einem Array in O(n)?</div>
+      <span class="lbl ai">✦ AI ANSWER</span>
+      <div class="answer">Ich nehme ein Hash-Set: ein Durchlauf, jede Abfrage im Schnitt O(1).
+<pre><span class="k">def</span> <span class="f">find_dups</span>(nums):
+    seen, dups = <span class="t">set</span>(), <span class="t">set</span>()
+    <span class="k">for</span> n <span class="k">in</span> nums:
+        <span class="k">if</span> n <span class="k">in</span> seen: dups.add(n)
+        seen.add(n)
+    <span class="k">return</span> dups<span class="typing"></span></pre>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="features" aria-labelledby="f-h">
+  <div class="wrap">
+    <span class="eyebrow">Funktionen</span>
+    <h2 id="f-h">Alles, was ein bezahlter Interview-Copilot kann. Für 0 €.</h2>
+    <p class="sec-lead">Ein schlankes Fenster für Windows und macOS, das über Zoom, Google Meet, Microsoft Teams oder dem Browser bleibt.</p>
+    <div class="grid grid-3">
+      <div class="card"><div class="ico" aria-hidden="true">🎙</div><h3>Sprache → Antwort</h3><p>Spracherkennung in Echtzeit mit Whisper. Die KI antwortet, sobald die Person im Interview aufhört zu sprechen.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">🖼</div><h3>Screenshot → Lösung</h3><p>Ein Tastenkürzel schickt den Bildschirm an ein Vision-Modell: LeetCode, HackerRank, SQL, Diagramme, Tests.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">🗣</div><h3>Sprechertrennung</h3><p>Unterscheidet die interviewende Person von deinem Mikrofon und beantwortet nur ihre Fragen.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">🔀</div><h3>7 KI-Anbieter</h3><p>Groq, Claude, Gemini, GPT, DeepSeek, GLM oder ein lokales Modell mit Ollama, mit automatischem Wechsel bei Limits.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">👤</div><h3>Antworten mit deiner Erfahrung</h3><p>Lebenslauf und Zielposition einfügen. Die Antworten kommen in der Ich-Form und stützen sich auf deine echte Erfahrung.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true">🌐</div><h3>Auf Deutsch</h3><p>Frag auf Deutsch, Englisch oder in vielen anderen Sprachen. Die Antwort kommt in derselben Sprache.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" aria-labelledby="h-h">
+  <div class="wrap">
+    <span class="eyebrow">So funktioniert's</span>
+    <h2 id="h-h">In 2 Minuten startklar</h2>
+    <div class="steps">
+      <div class="step"><h3>Herunterladen &amp; öffnen</h3><p>Installer für Windows oder die portable .exe laden. Sonst muss nichts installiert werden.</p></div>
+      <div class="step"><h3>Kostenlosen Schlüssel einfügen</h3><p>Hol dir einen kostenlosen Schlüssel auf <a href="https://console.groq.com">console.groq.com</a> und füge ihn in den Einstellungen ein. Er deckt Chat und Sprache ab.</p></div>
+      <div class="step"><h3>Tastenkürzel drücken</h3><p><kbd>Strg</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd> zum Zuhören, <kbd>Strg</kbd>+<kbd>Shift</kbd>+<kbd>Leertaste</kbd> für die Aufgabe auf dem Bildschirm.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare" aria-labelledby="c-h">
+  <div class="wrap">
+    <span class="eyebrow">Kostenlos vs. bezahlt</span>
+    <h2 id="c-h">Eine kostenlose Alternative zu Cluely, Interview Coder und Final Round AI</h2>
+    <p class="sec-lead">Derselbe Ablauf wie bei bezahlten Interview-Copilots. Ohne Monatsgebühr.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th scope="col"><span class="sr">Funktion</span></th><th scope="col" class="us">AI Interview Helper</th><th scope="col">Typische bezahlte Copilots</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Preis</th><td class="us">✅ 0 €, für immer</td><td class="them">Monatliches Abo</td></tr>
+          <tr><th scope="row">Konto / Anmeldung</th><td class="us">✅ Nicht nötig</td><td class="them">Erforderlich</td></tr>
+          <tr><th scope="row">Quellcode</th><td class="us">✅ Offen (MIT) auf GitHub</td><td class="them">Meist geschlossen</td></tr>
+          <tr><th scope="row">Wahl des KI-Modells</th><td class="us">✅ 7 Anbieter + jedes lokale Modell</td><td class="them">Vom Anbieter festgelegt</td></tr>
+          <tr><th scope="row">Funktioniert offline</th><td class="us">✅ Ja, mit Ollama</td><td class="them">Nein</td></tr>
+          <tr><th scope="row">Wohin deine Daten gehen</th><td class="us">✅ Direkt zur KI deiner Wahl</td><td class="them">Über die Server des Anbieters</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>Warum kostenlos?</b> Die App kostet nichts. Für die KI nutzt du einen kostenlosen Schlüssel (Groq, Gemini und Z.ai bieten einen an) oder ein lokales Modell mit Ollama. Kein Zwischenhändler.</p>
+    <div class="providers">
+      <span class="prov"><i style="background:#f55036"></i>Groq <small>GRATIS</small></span>
+      <span class="prov"><i style="background:#c87941"></i>Claude</span>
+      <span class="prov"><i style="background:#4285f4"></i>Gemini <small>GRATIS</small></span>
+      <span class="prov"><i style="background:#10a37f"></i>OpenAI GPT</span>
+      <span class="prov"><i style="background:#7c6af7"></i>DeepSeek</span>
+      <span class="prov"><i style="background:#0d9488"></i>Z.ai GLM <small>GRATIS</small></span>
+      <span class="prov"><i style="background:#ff9f43"></i>Ollama <small>OFFLINE</small></span>
+    </div>
+  </div>
+</section>
+
+<section id="alternatives" aria-labelledby="a-h">
+  <div class="wrap">
+    <span class="eyebrow">Alternativen</span>
+    <h2 id="a-h">Auf der Suche nach einer kostenlosen Alternative?</h2>
+    <p class="sec-lead">Direkte Vergleiche mit den bekanntesten bezahlten KI-Interview-Tools.</p>
+    <div class="grid grid-3">
+      <a class="card" href="/ai-interview-helper/cluely-alternative/"><h3>Kostenlose Cluely-Alternative</h3><p>Cluely vs. AI Interview Helper: Preis, Funktionen, KI-Modelle und Datenschutz.</p><span class="more">Vergleichen → <span lang="en">(English)</span></span></a>
+      <a class="card" href="/ai-interview-helper/interview-coder-alternative/"><h3>Kostenlose Interview-Coder-Alternative</h3><p>Interview Coder vs. AI Interview Helper für Coding-Interviews und LeetCode.</p><span class="more">Vergleichen → <span lang="en">(English)</span></span></a>
+      <a class="card" href="/ai-interview-helper/final-round-ai-alternative/"><h3>Kostenlose Final-Round-AI-Alternative</h3><p>Final Round AI vs. AI Interview Helper: was du ohne Abo bekommst.</p><span class="more">Vergleichen → <span lang="en">(English)</span></span></a>
+    </div>
+  </div>
+</section>
+
+<section id="guides" aria-labelledby="g-h">
+  <div class="wrap">
+    <span class="eyebrow">Anleitungen</span>
+    <h2 id="g-h">Das Beste herausholen</h2>
+    <div class="grid grid-2">
+      <a class="card" href="/ai-interview-helper/free-ai-interview-assistant/"><div class="ico" aria-hidden="true">🛠</div><h3>Kostenlosen KI-Interview-Assistenten einrichten</h3><p>Schritt für Schritt: Download, kostenloser Groq-Schlüssel, Audio und die besten Modelle.</p><span class="more">Anleitung lesen → <span lang="en">(English)</span></span></a>
+      <a class="card" href="/ai-interview-helper/practice-coding-interviews-with-ai/"><div class="ico" aria-hidden="true">🧠</div><h3>Coding-Interviews mit KI üben</h3><p>Eine kostenlose Routine zur Vorbereitung auf LeetCode-Aufgaben und Live-Coding.</p><span class="more">Anleitung lesen → <span lang="en">(English)</span></span></a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="q-h">
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2 id="q-h">Häufige Fragen</h2>
+    <div class="faq">
+      <details><summary>Gibt es einen kostenlosen KI-Interview-Assistenten?</summary><p>Ja. AI Interview Helper ist ein kostenloser Open-Source-KI-Copilot für Interviews unter Windows und macOS. Es gibt keinen Bezahlplan: Du nutzt einen kostenlosen Schlüssel (Groq, Gemini oder Z.ai) oder ein lokales Modell mit Ollama.</p></details>
+      <details><summary>Ist das Open Source?</summary><p>Ja. Der komplette Quellcode liegt unter MIT-Lizenz auf GitHub: <a href="https://github.com/pyk-boo/ai-interview-helper">github.com/pyk-boo/ai-interview-helper</a>.</p></details>
+      <details><summary>Ist das ein KI-Interviewer?</summary><p>Nicht ganz. Ein KI-Interviewer stellt dir Fragen. AI Interview Helper steht auf deiner Seite: Er hört die Frage und schlägt eine Antwort vor. Zum Üben eignet sich ein Probeinterview mit Freunden oder einer aufgenommenen Fragenliste.</p></details>
+      <details><summary>Ist es eine kostenlose Alternative zu Cluely oder Interview Coder?</summary><p>Ja. Es deckt denselben Kernablauf ab (Frage hören, Bildschirm lesen, Antwort vorschlagen), ohne Abo und mit dem KI-Modell deiner Wahl.</p></details>
+      <details><summary>Funktioniert es für Coding-Interviews auf LeetCode oder HackerRank?</summary><p>Ja. Drück Strg+Shift+Leertaste, und die Aufgabe auf dem Bildschirm geht an ein Vision-Modell, das funktionierenden Code mit kurzer Erklärung liefert.</p></details>
+      <details><summary>Antwortet es auf Deutsch?</summary><p>Ja. Whisper erkennt Deutsch, und der Assistent antwortet in der Sprache der Frage.</p></details>
+      <details><summary>Wo werden meine API-Schlüssel gespeichert?</summary><p>Nur auf deinem Computer. Anfragen gehen direkt von deinem Rechner zum KI-Anbieter. Es gibt keinen Server dazwischen.</p></details>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="final-h">
+  <div class="wrap">
+    <div class="final">
+      <h2 id="final-h">Schluss mit Abos für Interview-Copilots</h2>
+      <p class="sec-lead">Herunterladen, kostenlosen Schlüssel einfügen, bereit fürs nächste Interview.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zm0 13 7.5 1.1v-7H3zm8.4 1.2L21 21v-8.5h-9.6zm0-15.4v7.2H21V3z"/></svg> Für Windows herunterladen</a>
+        <a class="btn btn-ghost" href="https://github.com/pyk-boo/ai-interview-helper">⭐ Auf GitHub einen Stern geben</a>
+      </div>
+      <p class="porsche">Für immer kostenlos. Wenn es dir zu einem Angebot verholfen hat, kannst du in den <a href="https://github.com/pyk-boo/ai-interview-helper#-support-the-project">Porsche-911-Fonds</a> des Autors einzahlen 🏎️</p>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div>
+      <p><a href="/ai-interview-helper/de/"><strong>AI Interview Helper</strong></a> v2.0.1 · © 2026 <a href="https://github.com/pyk-boo">pyk-boo</a> · MIT License</p>
+      <p>Zum Lernen und zur Vorbereitung auf Interviews. Der Einsatz in echten Interviews kann gegen Regeln des Unternehmens oder der Plattform verstoßen; die Verantwortung liegt bei dir.</p>
+      <p>Cluely, Interview Coder und Final Round AI sind Marken ihrer jeweiligen Inhaber. Dieses Projekt ist mit ihnen nicht verbunden.</p>
+    </div>
+    <div><h4>Produkt</h4><ul>
+      <li><a href="https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe">Für Windows herunterladen</a></li>
+      <li><a href="https://github.com/pyk-boo/ai-interview-helper/releases/latest">Alle Versionen</a></li>
+      <li><a href="https://github.com/pyk-boo/ai-interview-helper">Quellcode auf GitHub</a></li>
+      <li><a href="https://github.com/pyk-boo/ai-interview-helper#-support-the-project">Projekt unterstützen</a></li>
+    </ul></div>
+    <div><h4>Alternativen</h4><ul><li><a href="/ai-interview-helper/cluely-alternative/">Free Cluely alternative</a></li><li><a href="/ai-interview-helper/interview-coder-alternative/">Free Interview Coder alternative</a></li><li><a href="/ai-interview-helper/final-round-ai-alternative/">Free Final Round AI alternative</a></li></ul><h4 style="margin-top:18px">Anleitungen</h4><ul><li><a href="/ai-interview-helper/free-ai-interview-assistant/">Set up a free AI interview assistant</a></li><li><a href="/ai-interview-helper/practice-coding-interviews-with-ai/">Practice coding interviews with AI</a></li></ul></div>
+    <div><h4>Sprachen</h4><ul><li><a href="/ai-interview-helper/" hreflang="en" lang="en">English</a></li><li><a href="/ai-interview-helper/es/" hreflang="es" lang="es">Español</a></li><li><a href="/ai-interview-helper/pt/" hreflang="pt" lang="pt">Português</a></li><li><a href="/ai-interview-helper/de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="/ai-interview-helper/fr/" hreflang="fr" lang="fr">Français</a></li></ul></div>
+  </div>
+</footer>
+</body>
+</html>
