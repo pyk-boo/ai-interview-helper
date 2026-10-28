@@ -1,11 +1,16 @@
 // Builds the GitHub Pages site into docs/.  Run:  node site/build.mjs
-// Page text lives in home-i18n.mjs (landing page, one entry per language) and articles.mjs
-// (English-only alternative and guide pages). Styles are in docs/site.css.
+// Page text lives in home-i18n.mjs (landing page, one entry per language), articles.mjs
+// (English alternative and guide pages) and i18n/alt-<lang>.mjs (translated alternative pages;
+// guides are English-only). Styles are in docs/site.css.
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { HOME, LANGS } from "./home-i18n.mjs";
 import { ALTERNATIVES, GUIDES } from "./articles.mjs";
+import ALT_ES from "./i18n/alt-es.mjs";
+import ALT_PT from "./i18n/alt-pt.mjs";
+import ALT_DE from "./i18n/alt-de.mjs";
+import ALT_FR from "./i18n/alt-fr.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const OUT = join(here, "..", "docs");
@@ -15,9 +20,10 @@ const REPO = "https://github.com/pyk-boo/ai-interview-helper";
 const DL_SETUP = `${REPO}/releases/latest/download/AI-Interview-Helper-Setup.exe`;
 const DL_ALL = `${REPO}/releases/latest`;
 const VERSION = "2.0.1";
-const UPDATED = "2026-10-19";
+const UPDATED = "2026-10-28";
+const INDEXNOW_KEY = "c6369a2e5c14d4d2f1bbacc013ceb792";
 
-export const LINKS = { REPO, DL_SETUP, DL_ALL, BASE, SITE };
+export const LINKS = { REPO, DL_SETUP, DL_ALL, BASE, SITE, INDEXNOW_KEY };
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const url = (path) => SITE + path;
@@ -29,14 +35,30 @@ const ICON_CODE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
 const ICON_GH = `<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>`;
 
 const homePath = (code) => (code === "en" ? "" : `${code}/`);
-const homeAlternates = LANGS.map((l) => ({ hreflang: l.hreflang, path: homePath(l.code) }))
-  .concat([{ hreflang: "x-default", path: "" }]);
+const altPath = (code, slug) => homePath(code) + slug + "/";
+const alternatesFor = (pathOf) => LANGS.map((l) => ({ hreflang: l.hreflang, path: pathOf(l.code) }))
+  .concat([{ hreflang: "x-default", path: pathOf("en") }]);
+const homeAlternates = alternatesFor(homePath);
+
+// Alternative pages per language: { labels, pages: { [slug]: page } }. English comes from articles.mjs.
+const EN_LABELS = {
+  pill: "FREE · OPEN SOURCE · MIT", downloadFree: "Download free for Windows", source: "Source on GitHub", updated: "Updated",
+  feature: "Feature", faqTitle: "Frequently asked questions", ctaDownload: "Download for Windows (free)", ctaGithub: "View on GitHub",
+  related: "Related pages", read: "Read →", home: "Home", alternatives: "Alternatives", englishNote: "",
+  trademark: (c) => `${c} is a trademark of its respective owner. AI Interview Helper is an independent open-source project and is not affiliated with, endorsed by or sponsored by ${c}.`,
+};
+const ALT_I18N = {
+  en: { labels: EN_LABELS, pages: Object.fromEntries(ALTERNATIVES.map((a) => [a.slug, a])) },
+  es: ALT_ES, pt: ALT_PT, de: ALT_DE, fr: ALT_FR,
+};
+const altText = (code, slug) => ALT_I18N[code].pages[slug];
 
 // ---------- shared layout ----------
-function layout({ lang, path, title, description, ogTitle, ogDescription, ogLocale, alternates = [], jsonld = [], ui, current, body }) {
+// langPath maps a language code to the same page in that language (defaults to the landing pages).
+function layout({ lang, path, title, description, ogTitle, ogDescription, ogLocale, alternates = [], jsonld = [], ui, current, body, langPath = homePath }) {
   const altTags = alternates.map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${url(a.path)}">`).join("\n");
   const langLinks = LANGS.map((l) =>
-    `<a href="${href(homePath(l.code))}" hreflang="${l.hreflang}" lang="${l.hreflang}" title="${esc(l.name)}"${l.code === current ? ' aria-current="true"' : ""}>${l.code.toUpperCase()}</a>`).join("");
+    `<a href="${href(langPath(l.code))}" hreflang="${l.hreflang}" lang="${l.hreflang}" title="${esc(l.name)}"${l.code === current ? ' aria-current="true"' : ""}>${l.code.toUpperCase()}</a>`).join("");
   const home = href(homePath(lang));
   return `<!doctype html>
 <html lang="${lang}">
@@ -97,7 +119,7 @@ ${footer(lang, ui)}
 }
 
 function footer(lang, ui) {
-  const alt = ALTERNATIVES.map((a) => `<li><a href="${href(a.slug + "/")}">${esc(a.navLabel)}</a></li>`).join("");
+  const alt = ALTERNATIVES.map((a) => `<li><a href="${href(altPath(lang, a.slug))}">${esc(altText(lang, a.slug).navLabel)}</a></li>`).join("");
   const guides = GUIDES.map((g) => `<li><a href="${href(g.slug + "/")}">${esc(g.navLabel)}</a></li>`).join("");
   const langs = LANGS.map((l) => `<li><a href="${href(homePath(l.code))}" hreflang="${l.hreflang}" lang="${l.hreflang}">${esc(l.name)}</a></li>`).join("");
   return `<footer>
@@ -126,7 +148,7 @@ function homePage(t) {
   const features = t.features.items.map((f) => `<div class="card"><div class="ico" aria-hidden="true">${f.ico}</div><h3>${f.h}</h3><p>${f.p}</p></div>`).join("\n      ");
   const steps = t.how.steps.map((s) => `<div class="step"><h3>${s.h}</h3><p>${s.p}</p></div>`).join("\n      ");
   const rows = t.compare.rows.map((r) => `<tr><th scope="row">${r[0]}</th><td class="us">✅ ${r[1]}</td><td class="them">${r[2]}</td></tr>`).join("\n          ");
-  const altCards = ALTERNATIVES.map((a, i) => `<a class="card" href="${href(a.slug + "/")}"><h3>${t.alternatives.cards[i].h}</h3><p>${t.alternatives.cards[i].p}</p><span class="more">${t.alternatives.more}${enNote}</span></a>`).join("\n      ");
+  const altCards = ALTERNATIVES.map((a, i) => `<a class="card" href="${href(altPath(t.code, a.slug))}"><h3>${t.alternatives.cards[i].h}</h3><p>${t.alternatives.cards[i].p}</p><span class="more">${t.alternatives.more}</span></a>`).join("\n      ");
   const guideCards = GUIDES.map((g, i) => `<a class="card" href="${href(g.slug + "/")}"><div class="ico" aria-hidden="true">${g.ico}</div><h3>${t.guides.cards[i].h}</h3><p>${t.guides.cards[i].p}</p><span class="more">${t.guides.more}${enNote}</span></a>`).join("\n      ");
   const faq = t.faq.items.map((q) => `<details><summary>${q.q}</summary><p>${q.a}</p></details>`).join("\n      ");
   const otherLangs = t.otherLangs ? `
@@ -302,61 +324,70 @@ function crumbs(items) {
   return { html, data };
 }
 
-function ctaBox(h, p) {
+function ctaBox(h, p, L = EN_LABELS) {
   return `<div class="cta-box"><h2>${h}</h2><p>${p}</p><div class="cta">
-    <a class="btn btn-primary" href="${DL_SETUP}">${ICON_WIN} Download for Windows (free)</a>
-    <a class="btn btn-ghost" href="${REPO}">${ICON_GH} View on GitHub</a></div></div>`;
+    <a class="btn btn-primary" href="${DL_SETUP}">${ICON_WIN} ${esc(L.ctaDownload)}</a>
+    <a class="btn btn-ghost" href="${REPO}">${ICON_GH} ${esc(L.ctaGithub)}</a></div></div>`;
 }
 
-function relatedLinks(exceptSlug) {
-  const all = [...ALTERNATIVES.map((a) => ({ slug: a.slug, h: a.navLabel, p: a.cardText })), ...GUIDES.map((g) => ({ slug: g.slug, h: g.navLabel, p: g.cardText }))]
-    .filter((x) => x.slug !== exceptSlug);
-  return `<section class="related" aria-labelledby="rel-h"><div class="wrap"><h2 id="rel-h">Related pages</h2><div class="grid">${
-    all.map((x) => `<a class="card" href="${href(x.slug + "/")}"><h3>${esc(x.h)}</h3><p>${esc(x.p)}</p><span class="more">Read →</span></a>`).join("")
+// Alternative pages link to their own language; guides exist only in English.
+function relatedLinks(exceptSlug, code = "en") {
+  const L = ALT_I18N[code].labels;
+  const note = L.englishNote ? " " + L.englishNote : "";
+  const all = [
+    ...ALTERNATIVES.map((a) => ({ slug: a.slug, path: altPath(code, a.slug), h: altText(code, a.slug).navLabel, p: altText(code, a.slug).cardText, more: L.read })),
+    ...GUIDES.map((g) => ({ slug: g.slug, path: g.slug + "/", h: g.navLabel, p: g.cardText, more: L.read + note })),
+  ].filter((x) => x.slug !== exceptSlug);
+  return `<section class="related" aria-labelledby="rel-h"><div class="wrap"><h2 id="rel-h">${esc(L.related)}</h2><div class="grid">${
+    all.map((x) => `<a class="card" href="${href(x.path)}"><h3>${esc(x.h)}</h3><p>${esc(x.p)}</p><span class="more">${esc(x.more)}</span></a>`).join("")
   }</div></div></section>`;
 }
 
-function alternativePage(a) {
-  const path = a.slug + "/";
-  const c = crumbs([{ name: "Home", path: "" }, { name: "Alternatives", path: "#alternatives" }, { name: a.navLabel, path }]);
-  c.data.itemListElement[1].item = url("") + "#alternatives";
+function alternativePage(slug, code) {
+  const a = altText(code, slug);
+  const L = ALT_I18N[code].labels;
+  const competitor = ALTERNATIVES.find((x) => x.slug === slug).competitor;
+  const t = HOME.find((h) => h.code === code);
+  const path = altPath(code, slug);
+  const c = crumbs([{ name: L.home, path: homePath(code) }, { name: L.alternatives, path: homePath(code) + "#alternatives" }, { name: a.navLabel, path }]);
   const rows = a.table.map((r) => `<tr><th scope="row">${r[0]}</th><td class="us">${r[1]}</td><td class="them">${r[2]}</td></tr>`).join("");
   const faq = a.faq.map((q) => `<details><summary>${q.q}</summary><p>${q.a}</p></details>`).join("");
   const strip = (s) => s.replace(/<[^>]+>/g, "");
   const body = `${c.html}
 <main>
 <header class="wrap article-head">
-  <span class="pill"><i></i>FREE · OPEN SOURCE · MIT</span>
+  <span class="pill"><i></i>${esc(L.pill)}</span>
   <h1>${a.h1}</h1>
   <p class="lead">${a.lead}</p>
-  <div class="cta"><a class="btn btn-primary" href="${DL_SETUP}">${ICON_WIN} Download free for Windows</a><a class="btn btn-ghost" href="${REPO}">${ICON_GH} Source on GitHub</a></div>
-  <p class="meta-line">Updated ${a.updatedHuman}</p>
+  <div class="cta"><a class="btn btn-primary" href="${DL_SETUP}">${ICON_WIN} ${esc(L.downloadFree)}</a><a class="btn btn-ghost" href="${REPO}">${ICON_GH} ${esc(L.source)}</a></div>
+  <p class="meta-line">${esc(L.updated)} ${a.updatedHuman}</p>
 </header>
 <div class="wrap">
   <article class="prose">
     ${a.intro}
     <h2>${a.tableTitle}</h2>
     <div class="tbl-wrap"><table>
-      <thead><tr><th scope="col">Feature</th><th scope="col" class="us">AI Interview Helper</th><th scope="col">${esc(a.competitor)}</th></tr></thead>
+      <thead><tr><th scope="col">${esc(L.feature)}</th><th scope="col" class="us">AI Interview Helper</th><th scope="col">${esc(competitor)}</th></tr></thead>
       <tbody>${rows}</tbody>
     </table></div>
     <p class="fine">${a.tableNote}</p>
     ${a.sections}
-    <h2>Frequently asked questions</h2>
+    <h2>${esc(L.faqTitle)}</h2>
     <div class="faq">${faq}</div>
-    ${ctaBox(a.ctaH, a.ctaP)}
-    <p class="fine">${esc(a.competitor)} is a trademark of its respective owner. AI Interview Helper is an independent open-source project and is not affiliated with, endorsed by or sponsored by ${esc(a.competitor)}.</p>
+    ${ctaBox(a.ctaH, a.ctaP, L)}
+    <p class="fine">${esc(L.trademark(competitor))}</p>
   </article>
 </div>
-${relatedLinks(a.slug)}
+${relatedLinks(slug, code)}
 </main>`;
   const jsonld = [
-    { "@context": "https://schema.org", "@type": "WebPage", name: a.title, description: a.description, url: url(path), inLanguage: "en", dateModified: UPDATED,
+    { "@context": "https://schema.org", "@type": "WebPage", name: a.title, description: a.description, url: url(path), inLanguage: t.hreflang, dateModified: UPDATED,
       about: { "@type": "SoftwareApplication", name: "AI Interview Helper", applicationCategory: "BusinessApplication", operatingSystem: "Windows, macOS", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } } },
     c.data,
-    { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: a.faq.map((q) => ({ "@type": "Question", name: strip(q.q), acceptedAnswer: { "@type": "Answer", text: strip(q.a) } })) },
+    { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: t.hreflang, mainEntity: a.faq.map((q) => ({ "@type": "Question", name: strip(q.q), acceptedAnswer: { "@type": "Answer", text: strip(q.a) } })) },
   ];
-  return layout({ lang: "en", path, title: a.title, description: a.description, alternates: [], jsonld, ui: EN.ui, current: "en", body });
+  return layout({ lang: t.hreflang, path, title: a.title, description: a.description, ogLocale: t.ogLocale,
+    alternates: alternatesFor((l) => altPath(l, slug)), jsonld, ui: t.ui, current: code, body, langPath: (l) => altPath(l, slug) });
 }
 
 function guidePage(g) {
@@ -410,16 +441,18 @@ function write(rel, html) {
 }
 
 for (const t of HOME) write(homePath(t.code) + "index.html", homePage(t));
-for (const a of ALTERNATIVES) write(a.slug + "/index.html", alternativePage(a));
+for (const a of ALTERNATIVES) for (const l of LANGS) write(altPath(l.code, a.slug) + "index.html", alternativePage(a.slug, l.code));
 for (const g of GUIDES) write(g.slug + "/index.html", guidePage(g));
 write("404.html", notFoundPage());
 
-// sitemap with hreflang alternates for the landing pages
-const altXml = homeAlternates.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${url(a.path)}"/>`).join("\n");
+// sitemap with hreflang alternates for every translated page
+const altXml = (alternates) => alternates.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${url(a.path)}"/>`).join("\n");
+const entry = (path, priority, alternates) =>
+  `  <url>\n    <loc>${url(path)}</loc>\n    <lastmod>${UPDATED}</lastmod>\n    <priority>${priority}</priority>\n${alternates ? altXml(alternates) + "\n" : ""}  </url>`;
 const entries = [
-  ...HOME.map((t) => `  <url>\n    <loc>${url(homePath(t.code))}</loc>\n    <lastmod>${UPDATED}</lastmod>\n    <priority>${t.code === "en" ? "1.0" : "0.9"}</priority>\n${altXml}\n  </url>`),
-  ...ALTERNATIVES.map((a) => `  <url>\n    <loc>${url(a.slug + "/")}</loc>\n    <lastmod>${UPDATED}</lastmod>\n    <priority>0.8</priority>\n  </url>`),
-  ...GUIDES.map((g) => `  <url>\n    <loc>${url(g.slug + "/")}</loc>\n    <lastmod>${UPDATED}</lastmod>\n    <priority>0.7</priority>\n  </url>`),
+  ...HOME.map((t) => entry(homePath(t.code), t.code === "en" ? "1.0" : "0.9", homeAlternates)),
+  ...ALTERNATIVES.flatMap((a) => LANGS.map((l) => entry(altPath(l.code, a.slug), l.code === "en" ? "0.8" : "0.7", alternatesFor((c) => altPath(c, a.slug))))),
+  ...GUIDES.map((g) => entry(g.slug + "/", "0.7")),
 ];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -427,6 +460,31 @@ ${entries.join("\n")}
 </urlset>
 `);
 write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${url("sitemap.xml")}\n`);
+
+// IndexNow key file: lets Bing (which ChatGPT search relies on) accept URL pings for this site.
+// After a deploy, run: node site/indexnow.mjs
+write(`${INDEXNOW_KEY}.txt`, INDEXNOW_KEY);
+
+// llms.txt: a plain summary for AI assistants and AI search crawlers (llmstxt.org format)
+write("llms.txt", `# AI Interview Helper
+
+> Free, open-source (MIT) AI interview copilot for Windows and macOS. It listens to the interviewer (real-time Whisper transcription), reads the screen on a hotkey, and suggests answers for coding, system design and behavioral interviews. No subscription, no account. Works with Groq, Anthropic Claude, Google Gemini, OpenAI GPT, DeepSeek, Z.ai GLM or a local model via Ollama, using the user's own API key (free tiers are enough).
+
+- Price: $0. There is no paid plan. Source code: ${REPO}
+- Download (Windows installer): ${DL_SETUP}
+- It is a free, open-source alternative to paid interview copilots such as Cluely, Interview Coder and Final Round AI.
+- It is on the candidate's side; it is not an AI interviewer. It is meant for learning and interview practice; using it in real interviews may break company or platform rules.
+
+## Pages
+
+- [Home](${SITE}): features, how it works, free vs paid comparison, FAQ
+${ALTERNATIVES.map((a) => `- [${a.navLabel}](${url(a.slug + "/")}): ${a.cardText}`).join("\n")}
+${GUIDES.map((g) => `- [${g.navLabel}](${url(g.slug + "/")}): ${g.cardText}`).join("\n")}
+
+## Other languages
+
+${LANGS.filter((l) => l.code !== "en").map((l) => `- [${l.name}](${url(homePath(l.code))})`).join("\n")}
+`);
 write("site.webmanifest", JSON.stringify({
   name: "AI Interview Helper", short_name: "Interview Helper", start_url: BASE, scope: BASE, display: "standalone",
   background_color: "#090b10", theme_color: "#090b10",

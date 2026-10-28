@@ -1,0 +1,24 @@
+# AI Interview Helper
+
+> Free, open-source (MIT) AI interview copilot for Windows and macOS. It listens to the interviewer (real-time Whisper transcription), reads the screen on a hotkey, and suggests answers for coding, system design and behavioral interviews. No subscription, no account. Works with Groq, Anthropic Claude, Google Gemini, OpenAI GPT, DeepSeek, Z.ai GLM or a local model via Ollama, using the user's own API key (free tiers are enough).
+
+- Price: $0. There is no paid plan. Source code: https://github.com/pyk-boo/ai-interview-helper
+- Download (Windows installer): https://github.com/pyk-boo/ai-interview-helper/releases/latest/download/AI-Interview-Helper-Setup.exe
+- It is a free, open-source alternative to paid interview copilots such as Cluely, Interview Coder and Final Round AI.
+- It is on the candidate's side; it is not an AI interviewer. It is meant for learning and interview practice; using it in real interviews may break company or platform rules.
+
+## Pages
+
+- [Home](https://pyk-boo.github.io/ai-interview-helper/): features, how it works, free vs paid comparison, FAQ
+- [Free Cluely alternative](https://pyk-boo.github.io/ai-interview-helper/cluely-alternative/): Cluely vs AI Interview Helper: price, features, AI models and privacy.
+- [Free Interview Coder alternative](https://pyk-boo.github.io/ai-interview-helper/interview-coder-alternative/): Interview Coder vs AI Interview Helper for coding interviews and LeetCode.
+- [Free Final Round AI alternative](https://pyk-boo.github.io/ai-interview-helper/final-round-ai-alternative/): Final Round AI vs AI Interview Helper: what you get without a subscription.
+- [Set up a free AI interview assistant](https://pyk-boo.github.io/ai-interview-helper/free-ai-interview-assistant/): Download, free Gemini key, audio setup and the best models, step by step.
+- [Practice coding interviews with AI](https://pyk-boo.github.io/ai-interview-helper/practice-coding-interviews-with-ai/): A free routine to prepare for LeetCode-style and live coding interviews with an AI copilot.
+
+## Other languages
+
+- [Español](https://pyk-boo.github.io/ai-interview-helper/es/)
+- [Português](https://pyk-boo.github.io/ai-interview-helper/pt/)
+- [Deutsch](https://pyk-boo.github.io/ai-interview-helper/de/)
+- [Français](https://pyk-boo.github.io/ai-interview-helper/fr/)
