@@ -283,11 +283,13 @@ kbd{background:rgba(255,255,255,0.08);border:1px solid var(--border2);border-rad
     <button class="btn-primary" id="btnSaveSettings">✓ Save &amp; Start Session</button>
     
     <div class="hotkeys-grid">
-      <div class="hk"><span>Screenshot</span><kbd>⌃⇧Space</kbd></div>
-      <div class="hk"><span>Listen</span><kbd>⌃⇧L</kbd></div>
-      <div class="hk"><span>Hide/Show</span><kbd>⌃⇧H</kbd></div>
-      <div class="hk"><span>Clear chat</span><kbd>⌃⇧C</kbd></div>
-      <div class="hk" style="grid-column:1/-1;border-color:rgba(255,95,109,0.35);background:rgba(255,95,109,0.06)"><span style="color:var(--red)">Full shutdown</span><kbd style="color:var(--red);border-color:rgba(255,95,109,0.5)">⌃⇧Q</kbd></div>
+      <div class="hk"><span>Screenshot</span><kbd>Ctrl+Shift+Space</kbd></div>
+      <div class="hk"><span>Listen</span><kbd>Ctrl+Shift+L</kbd></div>
+      <div class="hk"><span>Hide/Show</span><kbd>Ctrl+Shift+H</kbd></div>
+      <div class="hk"><span>Clear chat</span><kbd>Ctrl+Shift+C</kbd></div>
+      <div class="hk" style="grid-column:1/-1"><span>Type in chat</span><kbd>Ctrl+Shift+Enter</kbd></div>
+      <div class="hk" style="grid-column:1/-1"><span>Move window</span><kbd>Ctrl+Alt+Arrow keys</kbd></div>
+      <div class="hk" style="grid-column:1/-1;border-color:rgba(255,95,109,0.35);background:rgba(255,95,109,0.06)"><span style="color:var(--red)">Full shutdown</span><kbd style="color:var(--red);border-color:rgba(255,95,109,0.5)">Ctrl+Shift+Q</kbd></div>
     </div>
     <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-align:center">🛡 INVISIBLE to screen sharing</div>
   </div>
@@ -1670,6 +1672,17 @@ if (window.electron) {
   window.electron.onToggleListen(()      => toggleManualRecord());  // same as the red Record button
   window.electron.onError(msg           => { addError(msg); setStatus('ERROR', 'error'); });
   window.electron.onClear(()            => clearChat());
+  if (typeof window.electron.onFocusInput === 'function') {
+    window.electron.onFocusInput(()     => focusChatInput());
+  }
+}
+
+// Ctrl+Shift+Enter: open the chat tab and put the cursor in the message box.
+function focusChatInput() {
+  if (activeTab !== 'chat') switchTab('chat');
+  userInput.focus();
+  const end = userInput.value.length;
+  userInput.setSelectionRange(end, end);
 }
 
 // ══════════════════════════════════════════════

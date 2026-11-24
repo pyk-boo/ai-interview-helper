@@ -19,6 +19,8 @@ app.setName(APP_NAME);
 let win;
 let isVisible = true;
 let defaultBounds = null;
+let customPos = null;   // set once the user moves the window with Ctrl+Alt+Arrows
+const MOVE_STEP = 60;   // px per key press
 
 // Safe send — never throw if the window/webContents was already destroyed.
 function send(channel, ...args) {
@@ -71,20 +73,53 @@ function createWindow() {
 function setWindowMode(mode) {
   if (!win || win.isDestroyed()) return;
   const area = screen.getPrimaryDisplay().workAreaSize;
+  let b;
   if (mode === "compact") {
     const size = 380;
     win.setMinimumSize(260, 260);
-    win.setBounds(
-      { x: area.width - size - 16, y: 16, width: size, height: size },
-      true
-    );
+    b = { x: area.width - size - 16, y: 16, width: size, height: size };
     win.setOpacity(0.88);
   } else {
     win.setMinimumSize(320, 400);
-    const b = defaultBounds || { x: area.width - 488, y: 0, width: 480, height: area.height };
-    win.setBounds(b, true);
+    b = { ...(defaultBounds || { x: area.width - 488, y: 0, width: 480, height: area.height }) };
     win.setOpacity(1);
   }
+  // Keep the spot the user moved the window to instead of jumping back to the corner.
+  if (customPos) b = clampToWorkArea({ ...b, x: customPos.x, y: customPos.y });
+  win.setBounds(b, true);
+}
+
+// Keep a rectangle fully inside the work area of the display it lands on
+// (works across several monitors: the nearest display to its center wins).
+function clampToWorkArea(b) {
+  const center = { x: Math.round(b.x + b.width / 2), y: Math.round(b.y + b.height / 2) };
+  const wa = screen.getDisplayNearestPoint(center).workArea;
+  const width = Math.min(b.width, wa.width);
+  const height = Math.min(b.height, wa.height);
+  const x = Math.min(Math.max(b.x, wa.x), wa.x + wa.width - width);
+  const y = Math.min(Math.max(b.y, wa.y), wa.y + wa.height - height);
+  return { x, y, width, height };
+}
+
+// Ctrl+Alt+Arrows: nudge the window around the screen without touching the mouse.
+function moveWindow(dx, dy) {
+  if (!win || win.isDestroyed()) return;
+  const cur = win.getBounds();
+  const b = clampToWorkArea({ ...cur, x: cur.x + dx, y: cur.y + dy });
+  win.setBounds(b);
+  customPos = { x: b.x, y: b.y };
+}
+
+// Ctrl+Shift+Enter: bring the window up and put the cursor in the chat box.
+function focusChatInput() {
+  if (!win || win.isDestroyed()) return;
+  if (!isVisible || !win.isVisible()) {
+    win.show();
+    isVisible = true;
+  }
+  win.focus();
+  win.webContents.focus();
+  send("focus-input");
 }
 
 async function captureScreen() {
@@ -166,6 +201,15 @@ app.whenReady().then(async () => {
 
   // Ctrl+Shift+C — clear chat
   reg("CommandOrControl+Shift+C", () => send("clear"));
+
+  // Ctrl+Shift+Enter — jump straight into the chat box and start typing
+  reg("CommandOrControl+Shift+Enter", () => focusChatInput());
+
+  // Ctrl+Alt+Arrows — move the window around the screen
+  reg("CommandOrControl+Alt+Left",  () => moveWindow(-MOVE_STEP, 0));
+  reg("CommandOrControl+Alt+Right", () => moveWindow(MOVE_STEP, 0));
+  reg("CommandOrControl+Alt+Up",    () => moveWindow(0, -MOVE_STEP));
+  reg("CommandOrControl+Alt+Down",  () => moveWindow(0, MOVE_STEP));
 
   // Ctrl+Shift+Q — panic kill switch: close everything instantly, no confirmation
   reg("CommandOrControl+Shift+Q", () => app.exit(0));

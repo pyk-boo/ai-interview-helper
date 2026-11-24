@@ -88,9 +88,11 @@ On Windows you can simply double-click **`start.bat`**. It installs everything o
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> | Start / stop listening |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd> | Hide / show the window |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | Clear chat |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> | Jump to the chat box and start typing |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> | Move the window around the screen |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> | Quit instantly |
 
-On macOS use <kbd>⌘ Cmd</kbd> instead of <kbd>Ctrl</kbd>.
+On macOS use <kbd>⌘ Cmd</kbd> instead of <kbd>Ctrl</kbd> and <kbd>⌥ Option</kbd> instead of <kbd>Alt</kbd>.
 
 ## 🧠 Supported AI models
 
