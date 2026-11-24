@@ -19,7 +19,7 @@ const BASE = "/ai-interview-helper/";
 const REPO = "https://github.com/pyk-boo/ai-interview-helper";
 const DL_SETUP = `${REPO}/releases/latest/download/AI-Interview-Helper-Setup.exe`;
 const DL_ALL = `${REPO}/releases/latest`;
-const VERSION = "2.0.1";
+const VERSION = "2.1.0";
 const UPDATED = "2026-10-28";
 const INDEXNOW_KEY = "c6369a2e5c14d4d2f1bbacc013ceb792";
 

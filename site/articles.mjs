@@ -236,6 +236,8 @@ export const GUIDES = [
     <tr><td><code>Ctrl+Shift+Space</code></td><td>Screenshot the screen and solve the task</td></tr>
     <tr><td><code>Ctrl+Shift+H</code></td><td>Hide or show the window</td></tr>
     <tr><td><code>Ctrl+Shift+C</code></td><td>Clear the chat</td></tr>
+    <tr><td><code>Ctrl+Shift+Enter</code></td><td>Jump to the chat box and type a question</td></tr>
+    <tr><td><code>Ctrl+Alt+Arrow keys</code></td><td>Move the window around the screen</td></tr>
   </tbody>
 </table></div>
 <p>Play a recorded interview question, or ask a friend to read one, and watch the answer appear when the speaker stops talking.</p>

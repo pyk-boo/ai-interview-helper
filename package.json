@@ -1,6 +1,6 @@
 {
   "name": "ai-interview-helper",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Free, open-source AI interview assistant: real-time answers from voice transcription and screenshots. Works with Groq, Claude, Gemini, OpenAI, DeepSeek, Z.ai and local Ollama.",
   "keywords": [
     "ai interview assistant",
